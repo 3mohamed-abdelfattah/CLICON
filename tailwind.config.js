@@ -7,10 +7,11 @@ export default {
   theme: {
     extend: {
       colors: {
-        primaryText: "",
-        secondaryText: "",
-        primaryBackground: "",
-        secondaryBackground: "",
+        primaryText: "#FA8232",
+        secondaryText: "#2DA5F3",
+        primaryBackground: "#1B6392",
+        secondaryBackground: "#191C1F",
+        WarningText: "#EBC80C",
       },
       screens: {
         '2xl': '1536px',
