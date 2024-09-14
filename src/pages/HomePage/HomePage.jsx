@@ -1,6 +1,5 @@
 import React from 'react'
-import { DiscountBar } from '../../components/bars/DiscountBar'
-import { Header } from '../../components/bars/Header'
+import { DiscountBar, Header, Footer } from '@/components'
 
 export const HomePage = () => {
 
@@ -12,6 +11,7 @@ export const HomePage = () => {
         <main className={styles.mainContainer}>
             <DiscountBar />
             <Header />
+            <Footer />
         </main>
     )
 }
