@@ -40,14 +40,14 @@ const Products = ({ category }) => {
     };
 
     return (
-        <div className="w-3/4 grid grid-cols-4 gap-4 p-4">
+        <div className="grid grid-cols-4 gap-4 p-4">
             {products.map((product) => (
-                <div key={product.id} className="border flex flex-col items-center rounded-lg overflow-hidden shadow-md">
+                <div key={product.id} className="border flex flex-col items-center w-[234px] rounded-lg overflow-hidden shadow-sm">
                     <img src={product.thumbnail} alt={product.title} className="h-48 w-full object-contain" />
                     <div className='w-full mx-4'>
                         <div className="flex gap-1 px-4 pt-6">{getStarRating(product.rating)}</div>
                         <div className="px-4">
-                            <p className="text-[#191C1F] font-normal text-sm py-2">{product.title}</p>
+                            <p className="text-[#191C1F] font-bold text-base py-2">{product.title}</p>
                             <p className="text-secondaryText font-semibold text-sm pb-4">${product.price}</p>
                         </div>
                     </div>

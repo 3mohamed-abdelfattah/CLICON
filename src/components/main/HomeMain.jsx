@@ -8,9 +8,13 @@ export const HomeMain = () => {
     const [category, setCategory] = useState('');
 
     return (
-        <div>
-            <Categories onCategorySelect={setCategory} />
-            <Products category={category} />
+        <div className='flex justify-center my-10 gap-5'>
+            <span className='max-w-80 w-full'>
+                <Categories onCategorySelect={setCategory} />
+            </span>
+            <span className=''>
+                <Products category={category} />
+            </span>
             {/*
             <Cart />
              */}
