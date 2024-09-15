@@ -1,7 +1,16 @@
-import React from 'react'
-import { CartIcon, CompareIcon, DarkDropListIcon, FavoriteIcon, FollowUsIcon, HelpIcon, Logo, PhoneIcon, SearchIcon, SupportIcon, TrackIcon, UserIcon } from '@/utils/icons.util'
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { CartIcon, CompareIcon, DarkDropListIcon, FavoriteIcon, FollowUsIcon, HelpIcon, Logo, PhoneIcon, SearchIcon, SupportIcon, TrackIcon, UserIcon } from '@/utils/icons.util';
 
 export const Header = () => {
+    const navigate = useNavigate();
+    const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+
+    const handleLogout = () => {
+        localStorage.removeItem('token');
+        navigate('/');
+    };
+
     return (
         <header className='bg-primaryBackground w-full'>
 
@@ -28,7 +37,35 @@ export const Header = () => {
                 <span className='flex gap-6'>
                     <CartIcon />
                     <FavoriteIcon />
-                    <UserIcon />
+                    <span
+                        className='cursor-pointer'
+                        onMouseEnter={() => setIsDropdownOpen(true)}
+                        onMouseLeave={() => setIsDropdownOpen(false)}
+                    >
+                        <UserIcon />
+                    </span>
+
+                    {isDropdownOpen && (
+                        <div
+                            className="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-2"
+                            onMouseEnter={() => setIsDropdownOpen(true)}
+                            onMouseLeave={() => setIsDropdownOpen(false)}
+                        >
+                            <a
+                                href="/cart"
+                                className="block px-4 py-2 text-gray-800 hover:bg-gray-200"
+                            >
+                                Cart
+                            </a>
+                            <span
+                                className="block px-4 py-2 text-gray-800 hover:bg-gray-200"
+                                onClick={handleLogout}
+                            >
+                                Logout
+                            </span>
+                        </div>
+                    )}
+
                 </span>
             </nav>
 
@@ -56,6 +93,6 @@ export const Header = () => {
                 </span>
             </nav>
 
-        </header>
-    )
-}
+        </header >
+    );
+};

@@ -1,5 +1,5 @@
 import React from 'react'
-import { CompanyLogo, SubscribeButtonIcon } from '../../utils/icons.util'
+import { CompanyLogo, SubscribeButtonIcon } from '@/utils/icons.util'
 
 export const SubscribeBar = () => {
     return (
