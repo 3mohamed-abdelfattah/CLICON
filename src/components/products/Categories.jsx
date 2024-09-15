@@ -2,9 +2,9 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchCategories } from '@/store/slices/productsSlice';
 import WatchAD from '@/assets/images/ads/adWatch.png'
-import Design1 from '@/assets/forDesign/image1.png'
-import Design2 from '@/assets/forDesign/image2.png'
-import Design3 from '@/assets/forDesign/image3.png'
+import Design1 from '@/assets/images/forDesign/image1.png'
+import Design2 from '@/assets/images/forDesign/image2.png'
+import Design3 from '@/assets/images/forDesign/image3.png'
 
 const Categories = ({ onCategorySelect, selectedCategory }) => {
     const dispatch = useDispatch();

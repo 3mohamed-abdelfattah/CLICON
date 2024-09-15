@@ -44,9 +44,6 @@ export const SignIn = () => {
                         <p className="text-xl font-semibold text-center leading-7 text-[#77878F] py-4 w-full border-b border-[#77878F]/50">Sign Up</p>
                     </div>
                     <form className="mt-6" onSubmit={handleSignIn}>
-                        {errorMessage && (
-                            <p className="text-red-500 text-sm mb-4">{errorMessage}</p>
-                        )}
                         <div className='flex flex-col justify-center items-center'>
                             <span className='w-[360px] '>
                                 <label className="text-sm leading-5 text-[#191C1F] w-full text-left">Username</label>
@@ -102,6 +99,9 @@ export const SignIn = () => {
                                         </span>
                                     )}
                             </button>
+                            {errorMessage && (
+                                <p className="text-red-500 text-sm mb-4 px-5">{errorMessage}</p>
+                            )}
                             <ORIcon />
                             <WithGoogleIcon />
                             <WithAppleIcon />
