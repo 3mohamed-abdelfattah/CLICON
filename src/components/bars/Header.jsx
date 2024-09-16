@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { CartIcon, CompareIcon, DarkDropListIcon, FavoriteIcon, FollowUsIcon, HelpIcon, Logo, PhoneIcon, SearchIcon, SupportIcon, TrackIcon, UserIcon } from '@/utils/icons.util';
 
 export const Header = () => {
@@ -26,7 +26,9 @@ export const Header = () => {
 
             {/* Middle NAV */}
             <nav className='flex justify-evenly items-center h-[88px]'>
-                <Logo />
+                <Link to='/home'>
+                    <Logo />
+                </Link>
                 <span className='flex w-[646px] bg-white px-5 py-[14px] rounded-sm gap-2 shadow'>
                     <input
                         placeholder='Search for anything...'
@@ -35,7 +37,9 @@ export const Header = () => {
                     <SearchIcon />
                 </span>
                 <span className='flex gap-6'>
-                    <CartIcon />
+                    <Link to='/cart'>
+                        <CartIcon />
+                    </Link>
                     <FavoriteIcon />
                     <span
                         className='cursor-pointer'
@@ -52,13 +56,17 @@ export const Header = () => {
                             onMouseLeave={() => setIsDropdownOpen(false)}
                         >
                             <a
-                                href="/cart"
                                 className="block px-4 py-2 text-gray-800 hover:bg-gray-200"
                             >
-                                Cart
+                                Profile
+                            </a>
+                            <a
+                                className="block px-4 py-2 text-gray-800 hover:bg-gray-200"
+                            >
+                                Service
                             </a>
                             <span
-                                className="block px-4 py-2 text-gray-800 hover:bg-gray-200"
+                                className="block px-4 py-2 text-gray-800 hover:bg-gray-200 cursor-pointer"
                                 onClick={handleLogout}
                             >
                                 Logout

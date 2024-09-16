@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchProducts, fetchProductsByCategory } from '@/store/slices/productsSlice';
-import { GrayStarIcon, StarIcon } from '@/utils/icons.util';
-import Whish from '@/assets/images/forDesign/wishlest.png'
-import Checkout from '@/assets/images/forDesign/checkout.png'
-import Dis from '@/assets/images/forDesign/discont.png'
-import { CartIcon, DiscountIcon, DiscountProductIcon } from '../../utils/icons.util';
+import { GrayStarIcon, StarIcon, CartIcon, DiscountProductIcon } from '@/utils/icons.util';
+import Whish from '@/assets/images/forDesign/wishlest.png';
+import Checkout from '@/assets/images/forDesign/checkout.png';
+import { addToCart } from '../../store/slices/cartSlice';
+
+// Import addToCart action from cartSlice
 
 export const Products = ({ category }) => {
     const dispatch = useDispatch();
@@ -46,6 +47,13 @@ export const Products = ({ category }) => {
         return stars;
     };
 
+    const handleAddToCart = () => {
+        if (selectedProduct) {
+            dispatch(addToCart(selectedProduct));
+            setSelectedProduct(null);
+        }
+    };
+
     if (productsStatus === 'loading') return <div>Loading...</div>;
 
     return (
@@ -80,8 +88,8 @@ export const Products = ({ category }) => {
                         >
                             &times;
                         </button>
-                        <div className='flex gap-10'>
-                            <span className='border border-gray-300'>
+                        <div className="flex gap-10">
+                            <span className="border border-gray-300">
                                 <img
                                     src={selectedProduct.thumbnail}
                                     alt={selectedProduct.title}
@@ -89,21 +97,31 @@ export const Products = ({ category }) => {
                                 />
                             </span>
                             <div className="mt-4">
-                                <div className="flex gap-1 py-2 items-center">{getStarRating(selectedProduct.rating)} <span className='text-gray-600 text-sm'>(21,671 User feedback)</span></div>
+                                <div className="flex gap-1 py-2 items-center">
+                                    {getStarRating(selectedProduct.rating)}{' '}
+                                    <span className="text-gray-600 text-sm">(21,671 User feedback)</span>
+                                </div>
                                 <h2 className="text-2xl font-bold">{selectedProduct.title}</h2>
                                 <p className="text-sm text-gray-600 py-2">{selectedProduct.description}</p>
-                                <div className='flex items-center gap-2'>
-                                    <p className="text-lg font-bold text-secondaryText py-2">${selectedProduct.price}</p>
-                                    <p className="text-lg font-semibold text-gray-500 line-through  py-2">${Math.trunc(selectedProduct.price / selectedProduct.discountPercentage)}</p>
+                                <div className="flex items-center gap-2">
+                                    <p className="text-lg font-bold text-secondaryText py-2">
+                                        ${selectedProduct.price}
+                                    </p>
+                                    <p className="text-lg font-semibold text-gray-500 line-through py-2">
+                                        ${Math.trunc(selectedProduct.price / selectedProduct.discountPercentage)}
+                                    </p>
                                     <DiscountProductIcon />
                                 </div>
                                 <p className="text-lg text-green-700 py-2">{selectedProduct.availabilityStatus}</p>
                                 <p className="text-gray-400 py-2">{selectedProduct.returnPolicy}</p>
-                                <button className="flex items-center gap-5 my-4 bg-orange-500 text-white py-2 px-7 w-fit rounded">
+                                <button
+                                    className="flex items-center gap-5 my-4 bg-orange-500 text-white py-2 px-7 w-fit rounded"
+                                    onClick={handleAddToCart}
+                                >
                                     Add to Cart <CartIcon />
                                 </button>
-                                <img src={Whish} />
-                                <img src={Checkout} />
+                                <img src={Whish} alt="Wishlist" />
+                                <img src={Checkout} alt="Checkout" />
                             </div>
                         </div>
                     </div>
