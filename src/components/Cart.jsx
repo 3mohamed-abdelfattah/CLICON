@@ -1,5 +1,5 @@
-import React, { Fragment } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import React, { Fragment, useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { removeFromCart, updateCartQuantity } from '../store/slices/cartSlice';
 import { Header } from './bars/Header';
 import { Footer } from './bars/Footer';
@@ -7,15 +7,33 @@ import { DeleteIcon } from '../utils/icons.util';
 import { Link } from 'react-router-dom';
 
 const Cart = () => {
-    const cartItems = useSelector((state) => state.cart.items);
+    const [cartItems, setCartItems] = useState([]);
     const dispatch = useDispatch();
+
+    useEffect(() => {
+        // استدعاء بيانات السلة من الـ Local Storage عند تحميل الصفحة
+        const storedCartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+        setCartItems(storedCartItems);
+    }, []);
 
     const handleRemove = (id) => {
         dispatch(removeFromCart({ id }));
+
+        // تحديث السلة بعد الحذف
+        const updatedItems = cartItems.filter(item => item.id !== id);
+        setCartItems(updatedItems);
+        localStorage.setItem('cartItems', JSON.stringify(updatedItems));
     };
 
     const handleUpdateQuantity = (id, quantity) => {
         dispatch(updateCartQuantity({ id, quantity: parseInt(quantity, 10) }));
+
+        // تحديث السلة محليًا
+        const updatedItems = cartItems.map(item =>
+            item.id === id ? { ...item, quantity: parseInt(quantity, 10) } : item
+        );
+        setCartItems(updatedItems);
+        localStorage.setItem('cartItems', JSON.stringify(updatedItems));
     };
 
     const total = cartItems.reduce((acc, item) => acc + item.price * item.quantity, 0);
@@ -58,7 +76,7 @@ const Cart = () => {
                                                         <DeleteIcon />
                                                     </button>
                                                     <img
-                                                        src={item.thumbnail}
+                                                        src={item.thumbnail || '/path/to/default-image.jpg'}  // استخدام صورة افتراضية إذا لم تتوفر
                                                         alt={item.title}
                                                         className="w-16 h-16 object-cover mr-4"
                                                     />
@@ -142,4 +160,5 @@ const Cart = () => {
         </Fragment>
     );
 };
+
 export default Cart;
