@@ -11,7 +11,6 @@ const Cart = () => {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        // استدعاء بيانات السلة من الـ Local Storage عند تحميل الصفحة
         const storedCartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
         setCartItems(storedCartItems);
     }, []);
@@ -19,7 +18,6 @@ const Cart = () => {
     const handleRemove = (id) => {
         dispatch(removeFromCart({ id }));
 
-        // تحديث السلة بعد الحذف
         const updatedItems = cartItems.filter(item => item.id !== id);
         setCartItems(updatedItems);
         localStorage.setItem('cartItems', JSON.stringify(updatedItems));
@@ -28,7 +26,6 @@ const Cart = () => {
     const handleUpdateQuantity = (id, quantity) => {
         dispatch(updateCartQuantity({ id, quantity: parseInt(quantity, 10) }));
 
-        // تحديث السلة محليًا
         const updatedItems = cartItems.map(item =>
             item.id === id ? { ...item, quantity: parseInt(quantity, 10) } : item
         );
@@ -39,7 +36,7 @@ const Cart = () => {
     const total = cartItems.reduce((acc, item) => acc + item.price * item.quantity, 0);
     const tax = (total * 0.2).toFixed(2);
     const discount = 24;
-    const shipping = 0;
+    const shipping = 10;
     const grandTotal = (total - discount + parseFloat(tax)).toFixed(2);
 
     return (
@@ -123,9 +120,9 @@ const Cart = () => {
                                 <span>Shipping</span>
                                 <span>{shipping === 0 ? 'Free' : `$${shipping}`}</span>
                             </div>
-                            <div className="flex justify-between">
+                            <div className="flex justify-between text-green-600">
                                 <span>Discount</span>
-                                <span>${discount}</span>
+                                <span>-${discount}</span>
                             </div>
                             <div className="flex justify-between mb-3">
                                 <span>Tax</span>
