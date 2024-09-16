@@ -113,7 +113,7 @@ export const Products = ({ category }) => {
                                     <DiscountProductIcon />
                                 </div>
                                 <p className="text-lg text-green-700 py-2">{selectedProduct.availabilityStatus}</p>
-                                <p className="text-gray-400 py-2">{selectedProduct.returnPolicy}</p>
+                                <p className="text-gray-400 text-xs py-2">{selectedProduct.returnPolicy}</p>
                                 <button
                                     className="flex items-center gap-5 my-4 bg-orange-500 text-white py-2 px-7 w-fit rounded"
                                     onClick={handleAddToCart}
