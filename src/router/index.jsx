@@ -2,7 +2,9 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 // Pages
 import { HomePage, ErrorPage, ShopPage, SignIn, SignUp } from "@/pages";
+
 import ProtectedRoute from "./ProtectedRoute";
+import Cart from './../components/Cart';
 
 const router = createBrowserRouter([
     {
@@ -26,6 +28,14 @@ const router = createBrowserRouter([
         element: (
             <ProtectedRoute>
                 <ShopPage />
+            </ProtectedRoute>
+        ),
+    },
+    {
+        path: "/cart",
+        element: (
+            <ProtectedRoute>
+                <Cart />
             </ProtectedRoute>
         ),
     },
