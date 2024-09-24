@@ -41,14 +41,16 @@ const Categories = ({ onCategorySelect, selectedCategory }) => {
                     </button>
                 ))}
             </div>
-            <hr />
-            <img src={Design1} alt='ADS' />
-            <hr />
-            <img src={Design2} alt='ADS' />
-            <hr />
-            <img src={Design3} alt='ADS' />
-            <hr />
-            <img src={WatchAD} alt='ADS' />
+            <span className='pl-2'>
+                <hr />
+                <img src={Design1} alt='ADS' />
+                <hr />
+                <img src={Design2} alt='ADS' />
+                <hr />
+                <img src={Design3} alt='ADS' />
+                <hr />
+                <img src={WatchAD} alt='ADS' />
+            </span>
         </div>
     );
 };

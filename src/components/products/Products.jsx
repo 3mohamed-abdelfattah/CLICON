@@ -57,11 +57,11 @@ export const Products = ({ category }) => {
     return (
         <div className="relative">
             {/*  Product List */}
-            <div className="grid grid-cols-4 gap-4 p-4">
+            <div className="grid grid-cols-2 mid_lg:grid-cols-3 xl:grid-cols-4 gap-4 p-4">
                 {products.map((product) => (
                     <div
                         key={product.id}
-                        className="border flex flex-col items-center w-[234px] rounded-lg overflow-hidden shadow-sm cursor-pointer"
+                        className="border flex flex-col items-center mid_lg:w-[234px] rounded-lg overflow-hidden shadow-sm cursor-pointer"
                         onClick={() => handleProductClick(product)}
                     >
                         <img src={product.thumbnail} alt={product.title} className="h-48 w-full object-contain" />
