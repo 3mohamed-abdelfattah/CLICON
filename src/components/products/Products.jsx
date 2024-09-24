@@ -6,8 +6,6 @@ import Whish from '@/assets/images/forDesign/wishlest.png';
 import Checkout from '@/assets/images/forDesign/checkout.png';
 import { addToCart } from '../../store/slices/cartSlice';
 
-// Import addToCart action from cartSlice
-
 export const Products = ({ category }) => {
     const dispatch = useDispatch();
     const products = useSelector((state) => state.products.items);

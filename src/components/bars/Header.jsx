@@ -51,22 +51,22 @@ export const Header = () => {
 
                     {isDropdownOpen && (
                         <div
-                            className="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-2"
+                            className="absolute mt-7 w-1/6 bg-black/75 rounded-md shadow-lg py-2"
                             onMouseEnter={() => setIsDropdownOpen(true)}
                             onMouseLeave={() => setIsDropdownOpen(false)}
                         >
                             <a
-                                className="block px-4 py-2 text-gray-800 hover:bg-gray-200"
+                                className="block px-4 py-2 text-white font-bold hover:bg-secondaryText cursor-pointer"
                             >
                                 Profile
                             </a>
                             <a
-                                className="block px-4 py-2 text-gray-800 hover:bg-gray-200"
+                                className="block px-4 py-2 text-white font-bold hover:bg-secondaryText cursor-pointer"
                             >
                                 Service
                             </a>
                             <span
-                                className="block px-4 py-2 text-gray-800 hover:bg-gray-200 cursor-pointer"
+                                className="block px-4 py-2 text-white font-bold hover:bg-secondaryText hover:text-primaryText cursor-pointer"
                                 onClick={handleLogout}
                             >
                                 Logout
