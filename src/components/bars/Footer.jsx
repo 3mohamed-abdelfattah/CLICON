@@ -4,7 +4,7 @@ import { DownloadIcon, LogoFooter } from '@/utils/icons.util';
 export const Footer = () => {
   return (
     <footer className="relative flex flex-col justify-center items-center bg-secondaryBackground text-gray-400 w-full h-[472px]">
-      <div className="container px-28 grid grid-cols-1 md:grid-cols-5 ">
+      <div className="container px-5 grid grid-cols-2 md:grid-cols-4 xl:grid-cols-5  justify-items-center">
         {/* Logo and Contact */}
         <div className='max-w-[248px]'>
           <div className='mb-6'>
@@ -47,13 +47,13 @@ export const Footer = () => {
         </div>
 
         {/* Download App */}
-        <div className='max-w-[200px]'>
+        <div className='hidden xl:block max-w-[200px]'>
           <h3 className="text-white text-base font-medium mb-4 uppercase">Download App</h3>
           <DownloadIcon />
         </div>
 
         {/* Tags */}
-        <div className='max-w-[312px]'>
+        <div className='max-w-fill'>
           <h3 className="text-white text-base font-medium mb-4 uppercase">Popular Tag</h3>
           <div className="flex flex-wrap gap-2">
             <span className="bg-transparent text-sm border border-[#303639] leading-5 text-white px-3 py-[6px] rounded-sm">Game</span>

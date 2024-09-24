@@ -32,7 +32,7 @@ export const Header = () => {
                 <Link to='/home'>
                     <Logo />
                 </Link>
-                <span className='flex w-[646px] bg-white px-5 py-[14px] rounded-sm gap-2 shadow'>
+                <span className='flex md:w-[646px] bg-white mx-2 px-5 py-[14px] rounded-sm gap-2 shadow'>
                     <input
                         placeholder='Search for anything...'
                         className='text-sm font-normal leading-5 text-secondaryBackground w-full'
@@ -70,8 +70,8 @@ export const Header = () => {
             </nav>
 
             {/* Bottom NAV */}
-            <nav className='flex justify-around items-center gap-16 h-20 bg-white'>
-                <span className='flex items-center gap-6'>
+            <nav className='flex justify-around items-center gap-16 h-20 bg-white px-2'>
+                <span className='flex items-center gap-2 lg:gap-6'>
                     <button className='flex gap-2 rounded-sm bg-[#F2F4F5] items-center px-6 py-[14px] font-medium text-sm leading-5'>
                         All Category <DarkDropListIcon />
                     </button>
@@ -88,7 +88,7 @@ export const Header = () => {
                         <HelpIcon /> Need Help
                     </button>
                 </span>
-                <span className='flex gap-2'>
+                <span className='flex gap-2 text-sm lg:text-base'>
                     <PhoneIcon />+1-202-555-0104
                 </span>
             </nav>
