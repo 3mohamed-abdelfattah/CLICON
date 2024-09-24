@@ -34,7 +34,7 @@ const Cart = () => {
     };
 
     const total = cartItems.reduce((acc, item) => acc + item.price * item.quantity, 0);
-    const tax = (total * 0.2).toFixed(2);
+    const tax = (total * 0.1).toFixed(2);
     const discount = 24;
     const shipping = 10;
     const grandTotal = (total - discount + parseFloat(tax)).toFixed(2);
@@ -86,7 +86,7 @@ const Cart = () => {
                                                     type="number"
                                                     value={item.quantity}
                                                     onChange={(e) => handleUpdateQuantity(item.id, e.target.value)}
-                                                    className="w-16 text-center border rounded"
+                                                    className="w-16 text-center border-2 rounded-full"
                                                     min="1"
                                                 />
                                             </td>
@@ -129,7 +129,7 @@ const Cart = () => {
                                 <span>${tax}</span>
                             </div>
                             <hr />
-                            <div className="flex justify-between font-bold text-lg mt-3">
+                            <div className="flex justify-between font-bold text-lg mt-3 ">
                                 <span>Total</span>
                                 <span>${grandTotal} USD</span>
                             </div>
@@ -144,7 +144,7 @@ const Cart = () => {
                             <input
                                 type="email"
                                 className="w-full p-2 border rounded-lg"
-                                placeholder="uw7geq8chdhq892hd"
+                                placeholder="HA381CJA290JJ2AS"
                             />
                             <button className="bg-blue-500 text-white w-full py-3 mt-2 rounded">
                                 Apply Coupon
