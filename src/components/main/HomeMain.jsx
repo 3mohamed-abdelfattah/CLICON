@@ -14,14 +14,14 @@ export const HomeMain = () => {
     return (
         <div>
             <Link to='/shop'>
-                <div className='px-20'>
+                <div className='px-5 sm:px-20'>
                     <img src={xbox} />
                     <img src={Feature} className='my-5' />
                 </div>
-                <img src={Catog} className='my-16' />
+                <img src={Catog} className='my-3 sm:my-16' />
                 <img src={Pod} />
                 <img src={Acs} />
-                <div className='px-20'>
+                <div className='px-5 sm:px-20'>
                     <img src={Mac} />
                 </div>
                 <img src={Flash} />

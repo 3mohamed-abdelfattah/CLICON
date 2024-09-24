@@ -17,11 +17,11 @@ export const DiscountBar = () => {
                         <p className='font-semibold text-2xl text-white'>Friday</p>
                     </span>
 
-                    <span className='flex'>
+                    <span className='hidden sm:flex'>
                         <DiscountIcon />
                     </span>
 
-                    <span className='flex'>
+                    <span className='hidden md:flex'>
                         <button className='flex items-center gap-8 px-6 font-bold text-sm rounded-sm leading-[48px] uppercase bg-WarningText text-secondaryBackground'>
                             Shop now <RightArrowDarkIcon />
                         </button>

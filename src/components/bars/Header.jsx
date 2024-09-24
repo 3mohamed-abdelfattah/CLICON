@@ -18,8 +18,8 @@ export const Header = () => {
     return (
         <header className='bg-primaryBackground w-full'>
             {/* TOP NAV */}
-            <nav className='flex justify-evenly items-center h-[52px]'>
-                <p className='text-sm font-normal leading-5 text-white'>Welcome to Clicon online eCommerce store.</p>
+            <nav className='hidden xs:flex justify-evenly items-center h-[52px] px-2'>
+                <p className='hidden sm:block text-sm font-normal leading-5 text-white'>Welcome to Clicon online eCommerce store.</p>
                 <span>
                     <FollowUsIcon />
                 </span>
@@ -28,11 +28,11 @@ export const Header = () => {
             <hr className='border-gray-500' />
 
             {/* Middle NAV */}
-            <nav className='flex justify-evenly items-center h-[88px]'>
+            <nav className='flex justify-evenly items-center h-[88px] px-3'>
                 <Link to='/home'>
                     <Logo />
                 </Link>
-                <span className='flex md:w-[646px] bg-white mx-2 px-5 py-[14px] rounded-sm gap-2 shadow'>
+                <span className='hidden sm:flex md:w-[646px] bg-white mx-2 px-5 py-[14px] rounded-sm gap-2 shadow'>
                     <input
                         placeholder='Search for anything...'
                         className='text-sm font-normal leading-5 text-secondaryBackground w-full'
@@ -43,7 +43,9 @@ export const Header = () => {
                     <Link to='/cart'>
                         <CartIcon />
                     </Link>
-                    <FavoriteIcon />
+                    <span className='hidden xs:block'>
+                        <FavoriteIcon />
+                    </span>
                     <span className='cursor-pointer' onClick={toggleDropdown}>
                         <UserIcon />
                     </span>
@@ -78,17 +80,17 @@ export const Header = () => {
                     <button className='flex gap-2 rounded-sm text-[#5F6C72] items-center font-medium text-sm leading-5'>
                         <TrackIcon /> Track Order
                     </button>
-                    <button className='flex gap-2 rounded-sm text-[#5F6C72] items-center font-medium text-sm leading-5'>
+                    <button className='hidden sm:flex gap-2 rounded-sm text-[#5F6C72] items-center font-medium text-sm leading-5'>
                         <CompareIcon /> Compare
                     </button>
-                    <button className='flex gap-2 rounded-sm text-[#5F6C72] items-center font-medium text-sm leading-5'>
+                    <button className='hidden sm:flex gap-2 rounded-sm text-[#5F6C72] items-center font-medium text-sm leading-5'>
                         <SupportIcon /> Customer Support
                     </button>
                     <button className='flex gap-2 rounded-sm text-[#5F6C72] items-center font-medium text-sm leading-5'>
                         <HelpIcon /> Need Help
                     </button>
                 </span>
-                <span className='flex gap-2 text-sm lg:text-base'>
+                <span className='hidden md:flex gap-2 text-sm lg:text-base'>
                     <PhoneIcon />+1-202-555-0104
                 </span>
             </nav>

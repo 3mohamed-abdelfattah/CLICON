@@ -3,8 +3,8 @@ import { DownloadIcon, LogoFooter } from '@/utils/icons.util';
 
 export const Footer = () => {
   return (
-    <footer className="relative flex flex-col justify-center items-center bg-secondaryBackground text-gray-400 w-full h-[472px]">
-      <div className="container px-5 grid grid-cols-2 md:grid-cols-4 xl:grid-cols-5  justify-items-center">
+    <footer className="relative flex flex-col justify-center items-center bg-secondaryBackground text-gray-400 w-full py-10 md:py-0 md:h-[472px]">
+      <div className="container px-5 grid xs:grid-cols-2 md:grid-cols-4 xl:grid-cols-5 gap-8 justify-items-center pb-3 lg:pb-0">
         {/* Logo and Contact */}
         <div className='max-w-[248px]'>
           <div className='mb-6'>
@@ -19,7 +19,7 @@ export const Footer = () => {
         </div>
 
         {/* Top Categories */}
-        <div className='max-w-[200px]'>
+        <div className='max-w-[200px] '>
           <h3 className="text-white text-base font-medium mb-4 uppercase">Top Category</h3>
           <ul className="space-y-1">
             <li><a href="#" className="text-sm leading-5 hover:text-yellow-400">Computer & Laptop</a></li>
@@ -33,7 +33,7 @@ export const Footer = () => {
         </div>
 
         {/* Quick Links */}
-        <div className='max-w-[200px]'>
+        <div className='hidden md:block max-w-[200px]'>
           <h3 className="text-white text-base font-medium mb-4 uppercase">Quick Links</h3>
           <ul className="space-y-2">
             <li><a href="#" className="text-sm leading-5 hover:text-yellow-400">Shop Product</a></li>
@@ -53,7 +53,7 @@ export const Footer = () => {
         </div>
 
         {/* Tags */}
-        <div className='max-w-fill'>
+        <div className='hidden md:block max-w-fill'>
           <h3 className="text-white text-base font-medium mb-4 uppercase">Popular Tag</h3>
           <div className="flex flex-wrap gap-2">
             <span className="bg-transparent text-sm border border-[#303639] leading-5 text-white px-3 py-[6px] rounded-sm">Game</span>
@@ -73,9 +73,9 @@ export const Footer = () => {
         </div>
       </div>
 
-      <span className='absolute bottom-0 text-[#ADB7BC] text-sm w-full text-center'>
+      <span className='absolute bottom-0 text-[#ADB7BC] text-sm w-full text-center p-3'>
         <hr className='border-gray-800' />
-        <p className='my-5'>Kinbo - eCommerce Template © 2021. Design by Templatecookie</p>
+        <p>Kinbo - eCommerce Template © 2021. Design by Templatecookie</p>
       </span>
     </footer>
   );

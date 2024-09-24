@@ -36,16 +36,16 @@ export const SignIn = () => {
     return (
         <main>
             <Header />
-            <div className='py-6 px-36 bg-gray-100'><RootIcon /></div>
+            <div className='py-6 px-5 md:px-36 bg-gray-100'><RootIcon /></div>
             <div className="flex items-center justify-center shadow-inner">
-                <div className="w-full max-w-[424px] border border-[#E4E7E9] my-24 bg-white rounded shadow-md">
+                <div className="w-full max-w-[424px] border border-[#E4E7E9] my-5 sm:my-24 bg-white rounded shadow-md">
                     <div className="flex justify-between items-center text-center">
                         <p className="text-xl font-semibold text-center leading-7 text-[#191C1F] py-4 w-full border-b-4 border-primaryText ">Sign In</p>
                         <p className="text-xl font-semibold text-center leading-7 text-[#77878F] py-4 w-full border-b border-[#77878F]/50">Sign Up</p>
                     </div>
                     <form className="mt-6" onSubmit={handleSignIn}>
                         <div className='flex flex-col justify-center items-center'>
-                            <span className='w-[360px] '>
+                            <span className='w-72 xs:w-[360px] '>
                                 <label className="text-sm leading-5 text-[#191C1F] w-full text-left">Username</label>
                                 <input
                                     type="text"
@@ -57,7 +57,7 @@ export const SignIn = () => {
                             </span>
                         </div>
                         <div className="flex flex-col justify-center items-center mt-4">
-                            <span className='w-[360px] '>
+                            <span className='w-72 xs:w-[360px] '>
                                 <span className='flex items-center justify-between'>
                                     <label className="text-sm leading-5 text-[#191C1F]">Password</label>
                                     <a href="#" className="text-sm font-medium text-secondaryText hover:underline">
@@ -85,7 +85,7 @@ export const SignIn = () => {
                         <div className='flex flex-col justify-center items-center gap-2 mb-8'>
                             <button
                                 type="submit"
-                                className="w-[360px] mt-6 mb-4 text-white bg-orange-500 rounded-sm hover:bg-orange-600 focus:outline-none"
+                                className="w-72 sm:w-[360px] mt-6 mb-4 text-white bg-orange-500 rounded-sm hover:bg-orange-600 focus:outline-none"
                                 disabled={loading}
                             >
                                 {loading ?
@@ -102,14 +102,16 @@ export const SignIn = () => {
                             {errorMessage && (
                                 <p className="text-red-500 text-sm mb-4 px-5">{errorMessage}</p>
                             )}
+                            <span className='hidden xs:block'>
                             <ORIcon />
                             <WithGoogleIcon />
                             <WithAppleIcon />
+                            </span>
                         </div>
                     </form>
                 </div>
-            </div >
+            </div>
             <Footer />
-        </main >
+        </main>
     );
 };
