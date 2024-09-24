@@ -11,9 +11,12 @@ export const Header = () => {
         navigate('/');
     };
 
+    const toggleDropdown = () => {
+        setIsDropdownOpen(!isDropdownOpen);
+    };
+
     return (
         <header className='bg-primaryBackground w-full'>
-
             {/* TOP NAV */}
             <nav className='flex justify-evenly items-center h-[52px]'>
                 <p className='text-sm font-normal leading-5 text-white'>Welcome to Clicon online eCommerce store.</p>
@@ -41,28 +44,18 @@ export const Header = () => {
                         <CartIcon />
                     </Link>
                     <FavoriteIcon />
-                    <span
-                        className='cursor-pointer'
-                        onMouseEnter={() => setIsDropdownOpen(true)}
-                        onMouseLeave={() => setIsDropdownOpen(false)}
-                    >
+                    <span className='cursor-pointer' onClick={toggleDropdown}>
                         <UserIcon />
                     </span>
 
                     {isDropdownOpen && (
                         <div
-                            className="absolute mt-7 w-1/6 bg-black/75 rounded-md shadow-lg py-2"
-                            onMouseEnter={() => setIsDropdownOpen(true)}
-                            onMouseLeave={() => setIsDropdownOpen(false)}
+                            className="absolute right-0 mt-8 w-1/6 bg-black/75 rounded-md shadow-lg py-2"
                         >
-                            <a
-                                className="block px-4 py-2 text-white font-bold hover:bg-secondaryText cursor-pointer"
-                            >
+                            <a className="block px-4 py-2 text-white font-bold hover:bg-secondaryText cursor-pointer">
                                 Profile
                             </a>
-                            <a
-                                className="block px-4 py-2 text-white font-bold hover:bg-secondaryText cursor-pointer"
-                            >
+                            <a className="block px-4 py-2 text-white font-bold hover:bg-secondaryText cursor-pointer">
                                 Service
                             </a>
                             <span
@@ -73,7 +66,6 @@ export const Header = () => {
                             </span>
                         </div>
                     )}
-
                 </span>
             </nav>
 
@@ -100,7 +92,6 @@ export const Header = () => {
                     <PhoneIcon />+1-202-555-0104
                 </span>
             </nav>
-
-        </header >
+        </header>
     );
 };
