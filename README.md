@@ -27,6 +27,10 @@ CLICON is an eCommerce platform similar to Amazon, allowing users to browse prod
     <td><img src="https://github.com/user-attachments/assets/3da9a8d4-066d-460c-8e94-0dfca146c01d" alt="Image"  style="border: 5px solid #92E3A9;"/></td>
     <td><img src="https://github.com/user-attachments/assets/95c8cdf4-4798-435c-b475-1b29e39f356b" alt="Image"  style="border: 5px solid #92E3A9;"/></td>
   </tr>
+  <tr>
+    <td><img src="https://github.com/user-attachments/assets/57204a31-d821-49df-81b6-0950aaebf1e9" alt="Image"  style="border: 5px solid #92E3A9;"/></td>
+    <td><img src="https://github.com/user-attachments/assets/d116e2da-4e7b-4551-ba17-9f40aadb16d1" alt="Image"  style="border: 5px solid #92E3A9;"/></td>
+  </tr>
   <tr align='center'>
     <td><img width='320px' src="https://github.com/user-attachments/assets/892fd877-b1bd-42f2-bfbc-50569696a07a" alt="Image"  style="border: 5px solid #92E3A9;"/></td>
     <td><img width='320px' src="https://github.com/user-attachments/assets/873c7db7-bd56-430a-a035-ec3e589019d2" alt="Image"  style="border: 5px solid #92E3A9;"/></td>
@@ -96,29 +100,29 @@ CLICON is an eCommerce platform similar to Amazon, allowing users to browse prod
 
 1. Clone the repository:
 
-   \`\`\`bash
+   ```bash
    git clone https://github.com/yourusername/CLICON.git
-   \`\`\`
+   ```
 
 2. Navigate to the project folder:
 
-   \`\`\`bash
+   ```bash
    cd CLICON
-   \`\`\`
+   ```
 
 3. Install the dependencies:
 
-   \`\`\`bash
+   ````bash
    npm install
-   \`\`\`
+   ```
 
 4. Start the development server:
 
-   \`\`\`bash
+   ````bash
    npm run dev
-   \`\`\`
+   ```
 
-   The project will be running.
+  The project will be running.
 
 ## Usage
 
