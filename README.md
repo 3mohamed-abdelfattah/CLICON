@@ -129,7 +129,7 @@ CLICON is an eCommerce platform similar to Amazon, allowing users to browse prod
 - Browse products and categories.
 - Add products to your cart.
 - Login or register to save your cart and proceed with checkout.
--- (you can use this account to login username:michaelw password:michaelwpass)
+- - (you can use this account to login username:michaelw password:michaelwpass)
 
 ## API
 
