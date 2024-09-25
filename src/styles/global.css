@@ -4,10 +4,6 @@
 @tailwind components;
 @tailwind utilities;
 
-* {
-    /* outline: 1px solid red; */
-}
-
 body {
     font-family: "Public Sans", sans-serif;
     margin: 0;

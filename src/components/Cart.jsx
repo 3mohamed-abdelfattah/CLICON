@@ -51,9 +51,9 @@ const Cart = () => {
                             <thead>
                                 <tr className="bg-gray-100 text-left">
                                     <th className="p-4 text-sm md:text-base">PRODUCTS</th>
-                                    <th className="hidden sm:block p-4 text-sm md:text-base">PRICE</th>
+                                    <th className="p-4 text-sm md:text-base hidden sm:block ">PRICE</th>
                                     <th className="p-4 text-sm md:text-base">QUANTITY</th>
-                                    <th className="p-4 text-sm md:text-base hidden xs:block">SUB-TOTAL</th>
+                                    <th className="py-4 text-center text-sm md:text-base hidden xs:block">SUB-TOTAL</th>
                                 </tr>
                             </thead>
                             <tbody>
