@@ -112,13 +112,13 @@ CLICON is an eCommerce platform similar to Amazon, allowing users to browse prod
 
 3. Install the dependencies:
 
-   ````bash
+   ```bash
    npm install
    ```
 
 4. Start the development server:
 
-   ````bash
+   ```bash
    npm run dev
    ```
 
