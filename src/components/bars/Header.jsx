@@ -39,7 +39,7 @@ export const Header = () => {
                     />
                     <SearchIcon />
                 </span>
-                <span className='flex gap-6'>
+                <span className='flex gap-2 xs:gap-6'>
                     <Link to='/cart'>
                         <CartIcon />
                     </Link>

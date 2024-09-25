@@ -37,11 +37,11 @@ const Categories = ({ onCategorySelect, selectedCategory }) => {
                                 <span className="w-2 h-2 rounded-full bg-white" />
                             )}
                         </span>
-                        <span>{category.name}</span>
+                        <span className='text-sm xs:text-base'>{category.name}</span>
                     </button>
                 ))}
             </div>
-            <span className='pl-2'>
+            <span className='hidden md:block pl-2'>
                 <hr />
                 <img src={Design1} alt='ADS' />
                 <hr />

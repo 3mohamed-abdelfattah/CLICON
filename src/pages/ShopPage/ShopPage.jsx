@@ -11,8 +11,8 @@ export const ShopPage = () => {
     return (
         <main>
             <Header />
-            <div className='flex justify-center my-10 gap-5'>
-                <span className='max-w-80'>
+            <div className='flex flex-col md:flex-row justify-center my-10 gap-5'>
+                <span className='md:max-w-80'>
                     <Categories onCategorySelect={setCategory} />
                 </span>
                 <span className=''>

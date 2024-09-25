@@ -42,7 +42,7 @@ const Cart = () => {
     return (
         <Fragment>
             <Header />
-            <div className="p-20">
+            <div className="p-5 md:p-20">
                 <div className="grid grid-cols-12 gap-6">
                     {/* Left Section */}
                     <div className="col-span-12 lg:col-span-8">
@@ -50,10 +50,10 @@ const Cart = () => {
                         <table className="w-full bg-white shadow-lg rounded-lg">
                             <thead>
                                 <tr className="bg-gray-100 text-left">
-                                    <th className="p-4">PRODUCTS</th>
-                                    <th className="p-4">PRICE</th>
-                                    <th className="p-4">QUANTITY</th>
-                                    <th className="p-4">SUB-TOTAL</th>
+                                    <th className="p-4 text-sm md:text-base">PRODUCTS</th>
+                                    <th className="hidden sm:block p-4 text-sm md:text-base">PRICE</th>
+                                    <th className="p-4 text-sm md:text-base">QUANTITY</th>
+                                    <th className="p-4 text-sm md:text-base hidden xs:block">SUB-TOTAL</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -64,7 +64,7 @@ const Cart = () => {
                                 ) : (
                                     cartItems.map((item) => (
                                         <tr key={item.id} className="border-b">
-                                            <td className="p-4">
+                                            <td className="p-1 md:p-4">
                                                 <div className="flex items-center">
                                                     <button
                                                         className="mr-2 text-red-600"
@@ -75,22 +75,22 @@ const Cart = () => {
                                                     <img
                                                         src={item.thumbnail || '/path/to/default-image.jpg'}  // استخدام صورة افتراضية إذا لم تتوفر
                                                         alt={item.title}
-                                                        className="w-16 h-16 object-cover mr-4"
+                                                        className="w-12 h-12 xs:w-16 xs:h-16 object-cover mr-4"
                                                     />
-                                                    <span>{item.title}</span>
+                                                    <span className='text-sm md:text-base'>{item.title}</span>
                                                 </div>
                                             </td>
-                                            <td className="p-4">${item.price}</td>
-                                            <td className="p-4">
+                                            <td className="hidden sm:block p-1 md:p-4">${item.price}</td>
+                                            <td className="p-1 md:p-4 text-sm md:text-base">
                                                 <input
                                                     type="number"
                                                     value={item.quantity}
                                                     onChange={(e) => handleUpdateQuantity(item.id, e.target.value)}
-                                                    className="w-16 text-center border-2 rounded-full"
+                                                    className="w-10 md:w-16 text-center border-2 rounded-full"
                                                     min="1"
                                                 />
                                             </td>
-                                            <td className="p-4">${(item.price * item.quantity).toFixed(2)}</td>
+                                            <td className="p-1 md:p-4 text-sm md:text-base hidden xs:block">${(item.price * item.quantity).toFixed(2)}</td>
                                         </tr>
                                     ))
                                 )}
@@ -98,11 +98,11 @@ const Cart = () => {
                         </table>
                         <div className="flex justify-between mt-4">
                             <Link to='/shop'>
-                                <button className="border-2 border-secondaryText text-secondaryText py-2 px-4 rounded">
+                                <button className="border-2 border-secondaryText text-secondaryText py-2 px-2 xs:px-4 rounded">
                                     ← Return to Shop
                                 </button>
                             </Link>
-                            <button className="border-2 border-secondaryText text-secondaryText py-2 px-4 rounded">
+                            <button className="border-2 border-secondaryText text-secondaryText py-2 px-2 xs:px-4 rounded">
                                 Update Cart
                             </button>
                         </div>

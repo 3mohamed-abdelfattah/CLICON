@@ -68,7 +68,7 @@ export const Products = ({ category }) => {
                         <div className="w-full mx-4">
                             <div className="flex gap-1 px-4 pt-6">{getStarRating(product.rating)}</div>
                             <div className="px-4">
-                                <p className="text-[#191C1F] font-bold text-base py-2">{product.title}</p>
+                                <p className="text-[#191C1F] font-bold text-sm xs:text-base py-2">{product.title}</p>
                                 <p className="text-secondaryText font-semibold text-sm pb-4">${product.price}</p>
                             </div>
                         </div>
@@ -79,38 +79,38 @@ export const Products = ({ category }) => {
             {/*  Product Detail */}
             {selectedProduct && (
                 <div className="fixed inset-0 bg-black bg-opacity-80 flex justify-center items-center z-50">
-                    <div className="bg-white p-6 rounded-lg shadow-lg relative w-4/5 h-4/5">
+                    <div className="bg-white p-6 rounded-lg shadow-lg relative w-4/5">
                         <button
                             className="absolute top-2 right-2 text-gray-600 font-bold text-xl"
                             onClick={handleClose}
                         >
                             &times;
                         </button>
-                        <div className="flex gap-10">
-                            <span className="border border-gray-300">
+                        <div className="flex flex-col md:flex-row gap-1 md:gap-10">
+                            <span className="flex justify-center border border-gray-300">
                                 <img
                                     src={selectedProduct.thumbnail}
                                     alt={selectedProduct.title}
-                                    className="h-[464px] w-[616px] object-contain"
+                                    className="md:h-[464px] md:w-[616px] object-contain"
                                 />
                             </span>
                             <div className="mt-4">
                                 <div className="flex gap-1 py-2 items-center">
                                     {getStarRating(selectedProduct.rating)}{' '}
-                                    <span className="text-gray-600 text-sm">(21,671 User feedback)</span>
+                                    <span className="hidden xs:block text-gray-600 text-sm">(21,671 User feedback)</span>
                                 </div>
-                                <h2 className="text-2xl font-bold">{selectedProduct.title}</h2>
+                                <h2 className="text-xl md:text-2xl font-bold">{selectedProduct.title}</h2>
                                 <p className="text-sm text-gray-600 py-2">{selectedProduct.description}</p>
                                 <div className="flex items-center gap-2">
-                                    <p className="text-lg font-bold text-secondaryText py-2">
+                                    <p className="text-sm sm:text-lg font-bold text-secondaryText py-2">
                                         ${selectedProduct.price}
                                     </p>
-                                    <p className="text-lg font-semibold text-gray-500 line-through py-2">
+                                    <p className="text-sm sm:text-lg font-semibold text-gray-500 line-through py-2">
                                         ${Math.trunc(selectedProduct.price / selectedProduct.discountPercentage)}
                                     </p>
                                     <DiscountProductIcon />
                                 </div>
-                                <p className="text-lg text-green-700 py-2">{selectedProduct.availabilityStatus}</p>
+                                <p className="md:text-lg text-green-700 py-2">{selectedProduct.availabilityStatus}</p>
                                 <p className="text-gray-400 text-xs py-2">{selectedProduct.returnPolicy}</p>
                                 <button
                                     className="flex items-center gap-5 my-4 bg-orange-500 text-white py-2 px-7 w-fit rounded"
@@ -118,8 +118,8 @@ export const Products = ({ category }) => {
                                 >
                                     Add to Cart <CartIcon />
                                 </button>
-                                <img src={Whish} alt="Wishlist" />
-                                <img src={Checkout} alt="Checkout" />
+                                <img src={Whish} alt="Wishlist" className='hidden xs:block' />
+                                <img src={Checkout} alt="Checkout" className='hidden xs:block' />
                             </div>
                         </div>
                     </div>
