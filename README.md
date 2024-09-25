@@ -40,23 +40,6 @@ CLICON is an eCommerce platform similar to Amazon, allowing users to browse prod
 └── 📁src
     └── 📁assets
         └── 📁images
-            └── 📁ads
-                └── adWatch.png
-                └── homepod.png
-                └── image.png
-                └── xbox.png
-            └── 📁forDesign
-                └── acces.png
-                └── checkout.png
-                └── discont.png
-                └── flash.png
-                └── image.png
-                └── image1.png
-                └── image2.png
-                └── image3.png
-                └── mac.png
-                └── news.png
-                └── wishlest.png
             └── error.png
             └── Logo.png
     └── 📁components
