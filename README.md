@@ -1,5 +1,5 @@
 
-# CLICON - eCommerce Platform
+# C L I C O N  - eCommerce Platform
 
 CLICON is an eCommerce platform similar to Amazon, allowing users to browse products, add them to their cart, and manage their orders. The platform includes user authentication, cart management, and product browsing by category.
 
@@ -16,20 +16,20 @@ CLICON is an eCommerce platform similar to Amazon, allowing users to browse prod
 
  <table align="center">
   <tr>
-    <td><img src="" alt="Image"  style="border: 5px solid #92E3A9;"/></td>
-    <td><img src="" alt="Image"  style="border: 5px solid #92E3A9;"/></td>
+    <td><img src="https://github.com/user-attachments/assets/cb834c16-b3b9-4d69-9e36-4ab60aee587f" alt="Image"  style="border: 5px solid #92E3A9;"/></td>
+    <td><img src="https://github.com/user-attachments/assets/14f5b6cd-977f-4421-a871-94c292fc55af" alt="Image"  style="border: 5px solid #92E3A9;"/></td>
   </tr>
   <tr>
-    <td><img src="" alt="Image"  style="border: 5px solid #92E3A9;"/></td>
-    <td><img src="" alt="Image"  style="border: 5px solid #92E3A9;"/></td>
+    <td><img src="https://github.com/user-attachments/assets/e3f0f689-a485-4a8c-96fe-709336ccc16d" alt="Image"  style="border: 5px solid #92E3A9;"/></td>
+    <td><img src="https://github.com/user-attachments/assets/6d6e2848-5836-4d24-87d1-9bc51f6ee58d" alt="Image"  style="border: 5px solid #92E3A9;"/></td>
   </tr>
   <tr>
-    <td><img src="" alt="Image"  style="border: 5px solid #92E3A9;"/></td>
-    <td><img src="" alt="Image"  style="border: 5px solid #92E3A9;"/></td>
+    <td><img src="https://github.com/user-attachments/assets/3da9a8d4-066d-460c-8e94-0dfca146c01d" alt="Image"  style="border: 5px solid #92E3A9;"/></td>
+    <td><img src="https://github.com/user-attachments/assets/95c8cdf4-4798-435c-b475-1b29e39f356b" alt="Image"  style="border: 5px solid #92E3A9;"/></td>
   </tr>
   <tr align='center'>
-    <td><img width='320px' src="" alt="Image"  style="border: 5px solid #92E3A9;"/></td>
-    <td><img width='320px' src="" alt="Image"  style="border: 5px solid #92E3A9;"/></td>
+    <td><img width='320px' src="https://github.com/user-attachments/assets/892fd877-b1bd-42f2-bfbc-50569696a07a" alt="Image"  style="border: 5px solid #92E3A9;"/></td>
+    <td><img width='320px' src="https://github.com/user-attachments/assets/873c7db7-bd56-430a-a035-ec3e589019d2" alt="Image"  style="border: 5px solid #92E3A9;"/></td>
   </tr>
 </table>
 
