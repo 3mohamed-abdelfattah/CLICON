@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { Header, Footer } from '@/components';
+//Icons
 import { EyeIcon, ORIcon, RightArrowIcon, WithAppleIcon, WithGoogleIcon, RootIcon } from '@/utils/icons.util';
 
 export const SignIn = () => {
@@ -22,9 +23,7 @@ export const SignIn = () => {
                 username,
                 password,
             });
-
             localStorage.setItem('token', response.data.token);
-
             navigate('/home');
         } catch (error) {
             setErrorMessage('Login failed. Please check your credentials and try again.');
@@ -49,7 +48,7 @@ export const SignIn = () => {
                                 <label className="text-sm leading-5 text-[#191C1F] w-full text-left">Username</label>
                                 <input
                                     type="text"
-                                    className="w-full max-w-[360px] border border-[#E4E7E9] h-11 px-4 py-2 mt-2 text-gray-700 rounded-sm focus:outline-none focus:ring-2 focus:ring-orange-400"
+                                    className={styles.inputsStyle}
                                     value={username}
                                     onChange={(e) => setUsername(e.target.value)}
                                     required
@@ -67,7 +66,7 @@ export const SignIn = () => {
                                 <div className="relative">
                                     <input
                                         type={showPassword ? 'text' : 'password'}
-                                        className="w-full max-w-[360px] border border-[#E4E7E9] h-11 px-4 py-2 mt-2 text-gray-700 rounded-sm focus:outline-none focus:ring-2 focus:ring-orange-400"
+                                        className={styles.inputsStyle}
                                         value={password}
                                         onChange={(e) => setPassword(e.target.value)}
                                         required
@@ -103,9 +102,9 @@ export const SignIn = () => {
                                 <p className="text-red-500 text-sm mb-4 px-5">{errorMessage}</p>
                             )}
                             <span className='hidden xs:block'>
-                            <ORIcon />
-                            <WithGoogleIcon />
-                            <WithAppleIcon />
+                                <ORIcon />
+                                <WithGoogleIcon />
+                                <WithAppleIcon />
                             </span>
                         </div>
                     </form>
@@ -115,3 +114,7 @@ export const SignIn = () => {
         </main>
     );
 };
+
+const styles = {
+    inputsStyle: `w-full max-w-[360px] border border-[#E4E7E9] h-11 px-4 py-2 mt-2 text-gray-700 rounded-sm focus:outline-none focus:ring-2 focus:ring-orange-400`
+}

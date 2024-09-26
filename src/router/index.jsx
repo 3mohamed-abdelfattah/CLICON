@@ -1,10 +1,7 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-
 import ProtectedRoute from "./ProtectedRoute";
 // Pages
-import { HomePage, ErrorPage, ShopPage, SignIn, SignUp } from "@/pages";
-import Cart from './../components/Cart';
-
+import { HomePage, ErrorPage, ShopPage, SignIn, SignUp, Cart } from "@/pages";
 
 const router = createBrowserRouter([
     {

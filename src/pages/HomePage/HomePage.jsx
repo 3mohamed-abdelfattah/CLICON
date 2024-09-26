@@ -1,6 +1,5 @@
 import React from 'react'
-import { DiscountBar, Header, Footer, SubscribeBar } from '@/components'
-import { HomeMain } from '@/components/main/HomeMain'
+import { DiscountBar, Header, Footer, SubscribeBar, HomeMain } from '@/components'
 
 export const HomePage = () => {
 

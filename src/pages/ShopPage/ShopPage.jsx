@@ -1,8 +1,5 @@
 import React, { useState } from 'react'
-import Categories from '../../components/products/Categories'
-import { Products } from '../../components/products/Products'
-import { Header } from './../../components/bars/Header';
-import { Footer } from './../../components/bars/Footer';
+import { Header, Footer, Products, Categories } from '@/components';
 
 export const ShopPage = () => {
 

@@ -1,13 +1,13 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import News from './../../assets/images/forDesign/news.png'
-import Flash from './../../assets/images/forDesign/flash.png'
-import Mac from './../../assets/images/forDesign/mac.png'
-import Acs from './../../assets/images/forDesign/acces.png'
-import Feature from './../../assets/images/forDesign/image.png'
-import Catog from './../../assets/images/ads/image.png'
-import Pod from './../../assets/images/ads/homepod.png'
-import xbox from './../../assets/images/ads/xbox.png'
+import News from '@/assets/images/forDesign/news.png'
+import Flash from '@/assets/images/forDesign/flash.png'
+import Mac from '@/assets/images/forDesign/mac.png'
+import Acs from '@/assets/images/forDesign/acces.png'
+import Feature from '@/assets/images/forDesign/image.png'
+import Catog from '@/assets/images/ads/image.png'
+import Pod from '@/assets/images/ads/homepod.png'
+import xbox from '@/assets/images/ads/xbox.png'
 
 
 export const HomeMain = () => {

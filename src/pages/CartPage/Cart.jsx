@@ -1,12 +1,13 @@
 import React, { Fragment, useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { removeFromCart, updateCartQuantity } from '../store/slices/cartSlice';
-import { Header } from './bars/Header';
-import { Footer } from './bars/Footer';
-import { DeleteIcon } from '../utils/icons.util';
 import { Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { Header, Footer } from '@/components';
+//Store
+import { removeFromCart, updateCartQuantity } from '@/store/slices/cartSlice';
+//Icons
+import { DeleteIcon } from '@/utils/icons.util';
 
-const Cart = () => {
+export const Cart = () => {
     const [cartItems, setCartItems] = useState([]);
     const dispatch = useDispatch();
 
@@ -15,14 +16,15 @@ const Cart = () => {
         setCartItems(storedCartItems);
     }, []);
 
+    //Remove from cart
     const handleRemove = (id) => {
         dispatch(removeFromCart({ id }));
-
         const updatedItems = cartItems.filter(item => item.id !== id);
         setCartItems(updatedItems);
         localStorage.setItem('cartItems', JSON.stringify(updatedItems));
     };
 
+    //Change Item quantity
     const handleUpdateQuantity = (id, quantity) => {
         dispatch(updateCartQuantity({ id, quantity: parseInt(quantity, 10) }));
 
@@ -33,6 +35,7 @@ const Cart = () => {
         localStorage.setItem('cartItems', JSON.stringify(updatedItems));
     };
 
+    //Cart Total Amount
     const total = cartItems.reduce((acc, item) => acc + item.price * item.quantity, 0);
     const tax = (total * 0.1).toFixed(2);
     const discount = 24;
@@ -44,16 +47,17 @@ const Cart = () => {
             <Header />
             <div className="p-5 md:p-20">
                 <div className="grid grid-cols-12 gap-6">
+
                     {/* Left Section */}
                     <div className="col-span-12 lg:col-span-8">
                         <h2 className="text-xl font-bold mb-4">Shopping Card</h2>
                         <table className="w-full bg-white shadow-lg rounded-lg">
                             <thead>
                                 <tr className="bg-gray-100 text-left">
-                                    <th className="p-4 text-sm md:text-base">PRODUCTS</th>
-                                    <th className="p-4 text-sm md:text-base hidden sm:block ">PRICE</th>
-                                    <th className="p-4 text-sm md:text-base">QUANTITY</th>
-                                    <th className="py-4 text-center text-sm md:text-base hidden xs:block">SUB-TOTAL</th>
+                                    <th className={styles.thStyle}>PRODUCTS</th>
+                                    <th className={`${styles.thStyle} hidden sm:block`}>PRICE</th>
+                                    <th className={styles.thStyle}>QTY</th>
+                                    <th className={`${styles.thStyle} hidden xs:block text-center`}>SUB_Total</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -73,24 +77,23 @@ const Cart = () => {
                                                         <DeleteIcon />
                                                     </button>
                                                     <img
-                                                        src={item.thumbnail || '/path/to/default-image.jpg'}  // استخدام صورة افتراضية إذا لم تتوفر
+                                                        src={item.thumbnail || '@/assets/images/error.png'}
                                                         alt={item.title}
                                                         className="w-12 h-12 xs:w-16 xs:h-16 object-cover mr-4"
                                                     />
                                                     <span className='text-sm md:text-base'>{item.title}</span>
                                                 </div>
                                             </td>
-                                            <td className="hidden sm:block p-1 md:p-4">${item.price}</td>
+                                            <td className="hidden sm:flex p-1 md:p-4">${item.price}</td>
                                             <td className="p-1 md:p-4 text-sm md:text-base">
                                                 <input
                                                     type="number"
                                                     value={item.quantity}
                                                     onChange={(e) => handleUpdateQuantity(item.id, e.target.value)}
-                                                    className="w-10 md:w-16 text-center border-2 rounded-full"
-                                                    min="1"
+                                                    className="w-9 text-center border-2 rounded-full no-arrows"
                                                 />
                                             </td>
-                                            <td className="p-1 md:p-4 text-sm md:text-base hidden xs:block">${(item.price * item.quantity).toFixed(2)}</td>
+                                            <td className="p-1 md:p-4 text-sm md:text-base hidden xs:flex items-center h-24">${(item.price * item.quantity).toFixed(2)}</td>
                                         </tr>
                                     ))
                                 )}
@@ -98,11 +101,11 @@ const Cart = () => {
                         </table>
                         <div className="flex justify-between mt-4">
                             <Link to='/shop'>
-                                <button className="border-2 border-secondaryText text-secondaryText py-2 px-2 xs:px-4 rounded">
+                                <button className={styles.buttonsStyle}>
                                     ← Return to Shop
                                 </button>
                             </Link>
-                            <button className="border-2 border-secondaryText text-secondaryText py-2 px-2 xs:px-4 rounded">
+                            <button className={styles.buttonsStyle}>
                                 Update Cart
                             </button>
                         </div>
@@ -110,7 +113,7 @@ const Cart = () => {
 
                     {/* Right Section */}
                     <div className="col-span-12 lg:col-span-4 bg-white p-6 rounded-lg shadow-lg">
-                        <h3 className="text-xl font-bold mb-4">Card Totals</h3>
+                        <h3 className="text-xl font-bold mb-4">Cart Totals</h3>
                         <div className="mb-4">
                             <div className="flex justify-between">
                                 <span>Sub-total</span>
@@ -142,7 +145,7 @@ const Cart = () => {
                         <div className="mt-6">
                             <h4 className="text-lg font-semibold mb-2">Coupon Code</h4>
                             <input
-                                type="email"
+                                type="text"
                                 className="w-full p-2 border rounded-lg"
                                 placeholder="HA381CJA290JJ2AS"
                             />
@@ -150,6 +153,7 @@ const Cart = () => {
                                 Apply Coupon
                             </button>
                         </div>
+
                     </div>
                 </div>
             </div>
@@ -158,4 +162,7 @@ const Cart = () => {
     );
 };
 
-export default Cart;
+const styles = {
+    thStyle: `p-4 text-sm md:text-base`,
+    buttonsStyle: `border-2 border-secondaryText text-secondaryText py-2 px-2 xs:px-4 rounded`,
+}

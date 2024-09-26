@@ -15,6 +15,11 @@ export const Header = () => {
         setIsDropdownOpen(!isDropdownOpen);
     };
 
+    const styles = {
+        aTagStyle: `block px-4 py-2 text-white font-bold hover:bg-secondaryText cursor-pointer`,
+        bottomNAV: `flex gap-2 rounded-sm text-[#5F6C72] items-center font-medium text-sm leading-5`,
+    }
+
     return (
         <header className='bg-primaryBackground w-full'>
             {/* TOP NAV */}
@@ -52,16 +57,22 @@ export const Header = () => {
 
                     {isDropdownOpen && (
                         <div
-                            className="absolute right-0 mt-8 w-1/6 bg-black/75 rounded-md shadow-lg py-2"
+                            className="absolute right-0 mt-8 w-fit xs:w-1/5 bg-black/75 rounded-md shadow-lg py-2 z-10"
                         >
-                            <a className="block px-4 py-2 text-white font-bold hover:bg-secondaryText cursor-pointer">
-                                Profile
+                            <a className={styles.aTagStyle}>
+                                Show Profile
                             </a>
-                            <a className="block px-4 py-2 text-white font-bold hover:bg-secondaryText cursor-pointer">
-                                Service
+                            <a className={styles.aTagStyle}>
+                                Customer Service
+                            </a>
+                            <a className={styles.aTagStyle}>
+                                Show Favorites
+                            </a>
+                            <a className={styles.aTagStyle}>
+                                Show Cart
                             </a>
                             <span
-                                className="block px-4 py-2 text-white font-bold hover:bg-secondaryText hover:text-primaryText cursor-pointer"
+                                className="block px-4 py-2 text-white font-bold hover:bg-secondaryText hover:text-red-500 cursor-pointer"
                                 onClick={handleLogout}
                             >
                                 Logout
@@ -77,16 +88,16 @@ export const Header = () => {
                     <button className='flex gap-2 rounded-sm bg-[#F2F4F5] items-center px-6 py-[14px] font-medium text-sm leading-5'>
                         All Category <DarkDropListIcon />
                     </button>
-                    <button className='flex gap-2 rounded-sm text-[#5F6C72] items-center font-medium text-sm leading-5'>
+                    <button className={styles.bottomNAV}>
                         <TrackIcon /> Track Order
                     </button>
-                    <button className='hidden sm:flex gap-2 rounded-sm text-[#5F6C72] items-center font-medium text-sm leading-5'>
+                    <button className={`${styles.bottomNAV} hidden sm:flex`}>
                         <CompareIcon /> Compare
                     </button>
-                    <button className='hidden sm:flex gap-2 rounded-sm text-[#5F6C72] items-center font-medium text-sm leading-5'>
+                    <button className={`${styles.bottomNAV} hidden sm:flex`}>
                         <SupportIcon /> Customer Support
                     </button>
-                    <button className='flex gap-2 rounded-sm text-[#5F6C72] items-center font-medium text-sm leading-5'>
+                    <button className={styles.bottomNAV}>
                         <HelpIcon /> Need Help
                     </button>
                 </span>
@@ -94,6 +105,6 @@ export const Header = () => {
                     <PhoneIcon />+1-202-555-0104
                 </span>
             </nav>
-        </header>
+        </header >
     );
 };

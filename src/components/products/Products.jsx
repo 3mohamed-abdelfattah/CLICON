@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+//Store
 import { fetchProducts, fetchProductsByCategory } from '@/store/slices/productsSlice';
+import { addToCart } from '@/store/slices/cartSlice';
+//Icons
 import { GrayStarIcon, StarIcon, CartIcon, DiscountProductIcon } from '@/utils/icons.util';
+//Images
 import Whish from '@/assets/images/forDesign/wishlest.png';
 import Checkout from '@/assets/images/forDesign/checkout.png';
-import { addToCart } from '../../store/slices/cartSlice';
 
 export const Products = ({ category }) => {
     const dispatch = useDispatch();
