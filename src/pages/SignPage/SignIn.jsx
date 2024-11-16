@@ -6,8 +6,8 @@ import { Header, Footer } from '@/components';
 import { EyeIcon, ORIcon, RightArrowIcon, WithAppleIcon, WithGoogleIcon, RootIcon } from '@/utils/icons.util';
 
 export const SignIn = () => {
-    const [username, setUsername] = useState('');
-    const [password, setPassword] = useState('');
+    const [username, setUsername] = useState('michaelw');
+    const [password, setPassword] = useState('michaelwpass');
     const [showPassword, setShowPassword] = useState(false);
     const [loading, setLoading] = useState(false);
     const [errorMessage, setErrorMessage] = useState('');
@@ -50,6 +50,7 @@ export const SignIn = () => {
                                     type="text"
                                     className={styles.inputsStyle}
                                     value={username}
+                                    placeholder='michaelw'
                                     onChange={(e) => setUsername(e.target.value)}
                                     required
                                 />
@@ -69,6 +70,7 @@ export const SignIn = () => {
                                         className={styles.inputsStyle}
                                         value={password}
                                         onChange={(e) => setPassword(e.target.value)}
+                                        placeholder='michaelwpass'
                                         required
                                     />
                                     <button
