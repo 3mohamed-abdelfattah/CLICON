@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
 // Components
-import { Header, Footer } from '@/components';
+import { Header, Footer } from "@/components";
 // Icons
-import * as Icons from '@/utils/icons.util';
+import * as Icons from "@/utils/icons.util";
 
 // Styles for input fields
 const styles = {
@@ -13,32 +13,32 @@ const styles = {
 
 export const SignIn = () => {
     // Define state variables
-    const [username, setUsername] = useState('michaelw');
-    const [password, setPassword] = useState('michaelwpass');
+    const [username, setUsername] = useState("michaelw");
+    const [password, setPassword] = useState("michaelwpass");
     const [showPassword, setShowPassword] = useState(false);
     const [loading, setLoading] = useState(false);
-    const [errorMessage, setErrorMessage] = useState('');
+    const [errorMessage, setErrorMessage] = useState("");
     const navigate = useNavigate();
 
     // Handle sign-in form submission
     const handleSignIn = async (e) => {
         e.preventDefault();
         setLoading(true);
-        setErrorMessage('');
+        setErrorMessage("");
 
         try {
             // Make API request to handle sign in
-            const response = await axios.post('https://dummyjson.com/auth/login', {
+            const response = await axios.post("https://dummyjson.com/auth/login", {
                 username,
                 password,
             });
             // Store the token in local storage
-            localStorage.setItem('token', response.data.token);
+            localStorage.setItem("token", response.data.token);
             // Navigate to the home page
-            navigate('/home');
+            navigate("/home");
         } catch (error) {
             // Set error message if login fails
-            setErrorMessage('Login failed. Please check your credentials and try again.');
+            setErrorMessage("Login failed. Please check your credentials and try again.");
         } finally {
             setLoading(false);
         }
@@ -49,7 +49,7 @@ export const SignIn = () => {
             {/* Header component */}
             <Header />
 
-            <div className='py-6 px-5 md:px-36 bg-gray-100'>
+            <div className="py-6 px-5 md:px-36 bg-gray-100">
                 <Icons.RootIcon />
             </div>
 
@@ -64,14 +64,14 @@ export const SignIn = () => {
                     {/* Sign In form */}
                     <form className="mt-6" onSubmit={handleSignIn}>
                         {/* username */}
-                        <div className='flex flex-col justify-center items-center'>
-                            <span className='w-72 xs:w-[360px] '>
+                        <div className="flex flex-col justify-center items-center">
+                            <span className="w-72 xs:w-[360px] ">
                                 <label className="text-sm leading-5 text-[#191C1F] w-full text-left mb-2">Username</label>
                                 <input
                                     type="text"
                                     className={styles.inputsStyle}
                                     value={username}
-                                    placeholder='michaelw'
+                                    placeholder="michaelw"
                                     onChange={(e) => setUsername(e.target.value)}
                                     required
                                 />
@@ -79,8 +79,8 @@ export const SignIn = () => {
                         </div>
                         {/* password */}
                         <div className="flex flex-col justify-center items-center mt-4">
-                            <span className='w-72 xs:w-[360px]'>
-                                <span className='flex items-center justify-between mb-2'>
+                            <span className="w-72 xs:w-[360px]">
+                                <span className="flex items-center justify-between mb-2">
                                     <label className="text-sm leading-5 text-[#191C1F]">Password</label>
                                     <a href="#" className="text-sm font-medium text-secondaryText hover:underline">
                                         Forget Password
@@ -88,11 +88,11 @@ export const SignIn = () => {
                                 </span>
                                 <div className="flex items-center relative w-full max-w-[360px]">
                                     <input
-                                        type={showPassword ? 'text' : 'password'}
+                                        type={showPassword ? "text" : "password"}
                                         className={styles.inputsStyle}
                                         value={password}
                                         onChange={(e) => setPassword(e.target.value)}
-                                        placeholder='michaelwpass'
+                                        placeholder="michaelwpass"
                                         required
                                     />
                                     <span
@@ -105,7 +105,7 @@ export const SignIn = () => {
                             </span>
                         </div>
                         {/* buttons */}
-                        <div className='flex flex-col justify-center items-center gap-2 mb-8'>
+                        <div className="flex flex-col justify-center items-center gap-2 mb-8">
                             {/* Sign In buttons */}
                             <button
                                 type="submit"
@@ -113,11 +113,11 @@ export const SignIn = () => {
                                 disabled={loading}
                             >
                                 {loading ?
-                                    <span className='flex justify-center items-center text-sm font-bold leading-[48px] gap-2'>
+                                    <span className="flex justify-center items-center text-sm font-bold leading-[48px] gap-2">
                                         Signing in...
                                     </span>
                                     : (
-                                        <span className='flex justify-center items-center text-sm font-bold leading-[48px] gap-2'>
+                                        <span className="flex justify-center items-center text-sm font-bold leading-[48px] gap-2">
                                             SIGN IN
                                             <Icons.RightArrowIcon />
                                         </span>
@@ -127,7 +127,7 @@ export const SignIn = () => {
                                 <p className="text-red-500 text-sm mb-4 px-5">{errorMessage}</p>
                             )}
                             {/* Google & Apple buttons */}
-                            <aside className='w-full px-5'>
+                            <aside className="w-full px-5">
                                 <Icons.ORIcon />
                                 <span className="flex items-center border rounded-sm h-11 text-center text-sm text-[#475156] px-4 my-3 hover:bg-[#475156]/20 cursor-pointer">
                                     <Icons.WithGoogleIcon />
