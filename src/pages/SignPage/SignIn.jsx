@@ -4,7 +4,7 @@ import axios from 'axios';
 // Components
 import { Header, Footer } from '@/components';
 // Icons
-import { EyeIcon, ORIcon, RightArrowIcon, WithAppleIcon, WithGoogleIcon, RootIcon } from '@/utils/icons.util';
+import * as Icons from '@/utils/icons.util';
 
 // Styles for input fields
 const styles = {
@@ -50,7 +50,7 @@ export const SignIn = () => {
             <Header />
 
             <div className='py-6 px-5 md:px-36 bg-gray-100'>
-                <RootIcon />
+                <Icons.RootIcon />
             </div>
 
             {/* SignIn */}
@@ -97,9 +97,9 @@ export const SignIn = () => {
                                     />
                                     <span
                                         onClick={() => setShowPassword(!showPassword)}
-                                        className="absolute right-2 text-gray-600 cursor-pointer"
+                                        className="absolute right-2 text-gray-600 hover:text-gray-400 cursor-pointer"
                                     >
-                                        <EyeIcon />
+                                        {showPassword ? <Icons.HiddenEyeIcon /> : <Icons.EyeIcon />}
                                     </span>
                                 </div>
                             </span>
@@ -119,7 +119,7 @@ export const SignIn = () => {
                                     : (
                                         <span className='flex justify-center items-center text-sm font-bold leading-[48px] gap-2'>
                                             SIGN IN
-                                            <RightArrowIcon />
+                                            <Icons.RightArrowIcon />
                                         </span>
                                     )}
                             </button>
@@ -128,13 +128,13 @@ export const SignIn = () => {
                             )}
                             {/* Google & Apple buttons */}
                             <aside className='w-full px-5'>
-                                <ORIcon />
+                                <Icons.ORIcon />
                                 <span className="flex items-center border rounded-sm h-11 text-center text-sm text-[#475156] px-4 my-3 hover:bg-[#475156]/20 cursor-pointer">
-                                    <WithGoogleIcon />
+                                    <Icons.WithGoogleIcon />
                                     <p className="text-center w-full">Login with Google</p>
                                 </span>
                                 <span className="flex items-center border rounded-sm h-11 text-center text-sm text-[#475156] px-4 hover:bg-[#475156]/20 cursor-pointer">
-                                    <WithAppleIcon />
+                                    <Icons.WithAppleIcon />
                                     <p className="text-center w-full">Login with Apple</p>
                                 </span>
                             </aside>
