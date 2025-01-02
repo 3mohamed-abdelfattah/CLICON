@@ -46,7 +46,10 @@ export const Cart = () => {
 
     // Change item quantity
     const handleUpdateQuantity = (id, value) => {
+        // Parse the input value to an integer
         let quantity = parseInt(value, 10);
+
+        // Ensure the quantity is within the allowed range (1 to 99)
         if (quantity > 99) {
             quantity = 99;
         }
@@ -54,14 +57,19 @@ export const Cart = () => {
             quantity = 1;
         }
         if (isNaN(quantity)) {
-            quantity = 1;
+            quantity = 1; // Default to 1 if the input is not a number
         }
+
+        // Dispatch the update cart quantity action
         dispatch(updateCartQuantity({ id, quantity }));
 
+        // Update the local cart items state
         const updatedItems = cartItems.map(item =>
             item.id === id ? { ...item, quantity } : item
         );
         setCartItems(updatedItems);
+
+        // Save the updated cart items to local storage
         localStorage.setItem('cartItems', JSON.stringify(updatedItems));
     };
 
