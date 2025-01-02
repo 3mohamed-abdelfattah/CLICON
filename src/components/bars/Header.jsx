@@ -4,7 +4,8 @@ import { Link, useNavigate } from 'react-router-dom';
 import { CartIcon, CompareIcon, DarkDropListIcon, FavoriteIcon, FollowUsIcon, HelpIcon, Logo, PhoneIcon, SearchIcon, SupportIcon, TrackIcon, UserIcon } from '@/utils/icons.util';
 // Images
 import LogoIcon from '@/assets/images/Logo.png';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { resetCart } from '../../store/slices/cartSlice';
 
 // Reusable Styles
 const styles = {
@@ -13,13 +14,16 @@ const styles = {
 };
 
 export const Header = () => {
-    const navigate = useNavigate();
-    const [isDropdownOpen, setIsDropdownOpen] = useState(false);
     const cartCount = useSelector((state) => state.cart.cartCount);
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
+    const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
     // Handle user logout
     const handleLogout = () => {
         localStorage.removeItem('token');
+        localStorage.removeItem('cartItems');
+        dispatch(resetCart());
         navigate('/');
     };
 
