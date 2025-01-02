@@ -1,11 +1,11 @@
-import { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { Link, useNavigate } from "react-router-dom";
+import { resetCart } from "@/store/slices/cartSlice";
 // Icons
-import { CartIcon, CompareIcon, DarkDropListIcon, FavoriteIcon, FollowUsIcon, HelpIcon, Logo, PhoneIcon, SearchIcon, SupportIcon, TrackIcon, UserIcon } from '@/utils/icons.util';
+import * as Icons from "@/utils/icons.util";
 // Images
-import LogoIcon from '@/assets/images/Logo.png';
-import { useDispatch, useSelector } from 'react-redux';
-import { resetCart } from '../../store/slices/cartSlice';
+import LogoIcon from "@/assets/images/Logo.png";
 
 // Reusable Styles
 const styles = {
@@ -21,10 +21,10 @@ export const Header = () => {
 
     // Handle user logout
     const handleLogout = () => {
-        localStorage.removeItem('token');
-        localStorage.removeItem('cartItems');
+        localStorage.removeItem("token");
+        localStorage.removeItem("cartItems");
         dispatch(resetCart());
-        navigate('/');
+        navigate("/");
     };
 
     // Toggle the dropdown menu
@@ -33,51 +33,55 @@ export const Header = () => {
     };
 
     return (
-        <header className='bg-primaryBackground w-full'>
+        <header className="bg-primaryBackground w-full">
             {/* Top Navigation */}
-            <nav className='hidden xs:flex justify-between items-center h-[52px] mx-5 md:mx-10 lg:mx-20 xl:mx-36'>
-                <p className='hidden md:block text-sm font-normal leading-5 text-white'>
+            <nav className="hidden xs:flex justify-between items-center h-[52px] mx-5 md:mx-10 lg:mx-20 xl:mx-36">
+                <p className="hidden md:block text-sm font-normal leading-5 text-white">
                     Welcome to Clicon online eCommerce store.
                 </p>
                 <span>
-                    <FollowUsIcon />
+                    <Icons.FollowUsIcon />
                 </span>
             </nav>
 
-            <hr className='border-gray-500/80' />
+            <hr className="border-gray-500/80" />
 
             {/* Middle Navigation */}
-            <div className='relative flex justify-evenly items-center h-[88px] px-3'>
+            <div className="relative flex justify-evenly items-center h-[88px] px-3">
                 {/* Logo */}
-                <Link to='/home' aria-label="Home">
+                <Link to="/home" aria-label="Home">
                     <span className="hidden md:block">
-                        <Logo />
+                        <Icons.Logo />
                     </span>
                     <div className="md:hidden w-10 xs:w-12 shrink-0">
-                        <img src={LogoIcon} alt='logo' />
+                        <img src={LogoIcon} alt="logo" />
                     </div>
                 </Link>
+
                 {/* Search Bar */}
-                <div className='flex w-full max-w-[646px] bg-white mx-5 px-5 py-[14px] rounded-sm gap-2 shadow'>
+                <div className="flex w-full max-w-[646px] bg-white mx-5 px-5 py-[14px] rounded-sm gap-2 shadow">
                     <input
-                        placeholder='Search for anything...'
-                        className='text-sm font-normal leading-5 text-secondaryBackground w-full outline-none'
+                        placeholder="Search for anything..."
+                        className="text-sm font-normal leading-5 text-secondaryBackground w-full outline-none"
                     />
                     <button aria-label="Search">
-                        <SearchIcon />
+                        <Icons.SearchIcon />
                     </button>
                 </div>
+
                 {/* User Actions */}
-                <div className='flex gap-2 xs:gap-6'>
-                    <Link to='/cart' aria-label="Cart" className='relative'>
-                        <CartIcon />
-                        <div className='absolute -top-1 -right-1 border-[2.5px] border-primaryBackground flex justify-center items-center w-5 h-5 bg-white text-primaryBackground font-semibold text-sm rounded-full'>{cartCount}</div>
+                <div className="flex gap-2 xs:gap-6">
+                    <Link to="/cart" aria-label="Cart" className="relative">
+                        <Icons.CartIcon />
+                        <div className="absolute -top-1 -right-1 border-[2.5px] border-primaryBackground flex justify-center items-center w-5 h-5 bg-white text-primaryBackground font-semibold text-sm rounded-full">
+                            {cartCount}
+                        </div>
                     </Link>
-                    <button className='hidden xs:block' aria-label="Favorites">
-                        <FavoriteIcon />
+                    <button className="hidden xs:block" aria-label="Favorites">
+                        <Icons.FavoriteIcon />
                     </button>
-                    <button className='cursor-pointer' onClick={toggleDropdown} aria-haspopup="true" aria-expanded={isDropdownOpen}>
-                        <UserIcon />
+                    <button className="cursor-pointer" onClick={toggleDropdown} aria-haspopup="true" aria-expanded={isDropdownOpen}>
+                        <Icons.UserIcon />
                     </button>
 
                     {/* Dropdown Menu */}
@@ -104,26 +108,26 @@ export const Header = () => {
             </div>
 
             {/* Bottom Navigation */}
-            <nav className='flex justify-around items-center gap-16 h-20 bg-white px-2'>
-                <div className='flex items-center gap-2 lg:gap-6'>
-                    <button className='flex gap-2 rounded-sm bg-[#F2F4F5] items-center px-6 py-[14px] font-medium text-sm leading-5'>
-                        All Category <DarkDropListIcon />
+            <nav className="flex justify-around items-center gap-16 h-20 bg-white px-2">
+                <div className="flex items-center gap-2 lg:gap-6">
+                    <button className="flex gap-2 rounded-sm bg-[#F2F4F5] items-center px-6 py-[14px] font-medium text-sm leading-5">
+                        All Category <Icons.DarkDropListIcon />
                     </button>
-                    <Link to='/track-order' className={styles.bottomNAV}>
-                        <TrackIcon /> Track Order
+                    <Link to="/track-order" className={styles.bottomNAV}>
+                        <Icons.TrackIcon /> Track Order
                     </Link>
-                    <Link to='/compare' className={`${styles.bottomNAV} hidden sm:flex`}>
-                        <CompareIcon /> Compare
+                    <Link to="/compare" className={`${styles.bottomNAV} hidden sm:flex`}>
+                        <Icons.CompareIcon /> Compare
                     </Link>
-                    <Link to='/customer-support' className={`${styles.bottomNAV} hidden sm:flex`}>
-                        <SupportIcon /> Customer Support
+                    <Link to="/customer-support" className={`${styles.bottomNAV} hidden sm:flex`}>
+                        <Icons.SupportIcon /> Customer Support
                     </Link>
-                    <Link to='/help' className={styles.bottomNAV}>
-                        <HelpIcon /> Need Help
+                    <Link to="/help" className={styles.bottomNAV}>
+                        <Icons.HelpIcon /> Need Help
                     </Link>
                 </div>
-                <div className='hidden md:flex gap-2 text-sm lg:text-base'>
-                    <PhoneIcon />+1-202-555-0104
+                <div className="hidden md:flex gap-2 text-sm lg:text-base">
+                    <Icons.PhoneIcon />+1-202-555-0104
                 </div>
             </nav>
         </header>
