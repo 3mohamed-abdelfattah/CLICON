@@ -1,25 +1,25 @@
-import React, { useState } from 'react'
+import { useState } from 'react';
+// Components
 import { Header, Footer, Products, Categories } from '@/components';
 
-export const ShopPage = ({ cartCount }) => {
-
-    const [category, setCategory] = useState('');
+export const ShopPage = () => {
+    const [category, setCategory] = useState('mobile-accessories'); //Default category
 
     return (
-        <main>
+        <>
             <Header />
-            <div className='flex flex-col md:flex-row justify-center my-10 gap-5'>
-                <span className='md:max-w-80'>
+            <main className="flex flex-col md:flex-row justify-center my-10 gap-5">
+                {/* Categories Sidebar */}
+                <aside className="md:max-w-80">
                     <Categories onCategorySelect={setCategory} />
-                </span>
-                <span>
+                </aside>
+
+                {/* Products Section */}
+                <section className="flex-grow">
                     <Products category={category} />
-                </span>
-                {/*
-            <Cart />
-             */}
-            </div>
+                </section>
+            </main>
             <Footer />
-        </main>
-    )
-}
+        </>
+    );
+};
