@@ -45,11 +45,21 @@ export const Cart = () => {
     };
 
     // Change item quantity
-    const handleUpdateQuantity = (id, quantity) => {
-        dispatch(updateCartQuantity({ id, quantity: parseInt(quantity, 10) }));
+    const handleUpdateQuantity = (id, value) => {
+        let quantity = parseInt(value, 10);
+        if (quantity > 99) {
+            quantity = 99;
+        }
+        if (quantity < 1) {
+            quantity = 1;
+        }
+        if (isNaN(quantity)) {
+            quantity = 1;
+        }
+        dispatch(updateCartQuantity({ id, quantity }));
 
         const updatedItems = cartItems.map(item =>
-            item.id === id ? { ...item, quantity: parseInt(quantity, 10) } : item
+            item.id === id ? { ...item, quantity } : item
         );
         setCartItems(updatedItems);
         localStorage.setItem('cartItems', JSON.stringify(updatedItems));
