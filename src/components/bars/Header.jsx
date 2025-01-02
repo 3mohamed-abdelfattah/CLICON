@@ -1,10 +1,17 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 // Icons
 import { CartIcon, CompareIcon, DarkDropListIcon, FavoriteIcon, FollowUsIcon, HelpIcon, Logo, PhoneIcon, SearchIcon, SupportIcon, TrackIcon, UserIcon } from '@/utils/icons.util';
-import LogoIcon from '../../assets/images/Logo.png';
+// Images
+import LogoIcon from '@/assets/images/Logo.png';
 
-export const Header = () => {
+// Reusable Styles
+const styles = {
+    aTagStyle: `block px-4 py-2 text-black hover:bg-secondaryText cursor-pointer`,
+    bottomNAV: `flex gap-2 rounded-sm text-[#5F6C72] items-center font-medium text-sm leading-5`,
+};
+
+export const Header = ({ countItems }) => {
     const navigate = useNavigate();
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
@@ -19,15 +26,10 @@ export const Header = () => {
         setIsDropdownOpen(!isDropdownOpen);
     };
 
-    const styles = {
-        aTagStyle: `block px-4 py-2 text-black hover:bg-secondaryText cursor-pointer`,
-        bottomNAV: `flex gap-2 rounded-sm text-[#5F6C72] items-center font-medium text-sm leading-5`,
-    };
-
     return (
         <header className='bg-primaryBackground w-full'>
             {/* Top Navigation */}
-            <nav className='hidden xs:flex justify-evenly items-center h-[52px] mx-2'>
+            <nav className='hidden xs:flex justify-between items-center h-[52px] mx-5 md:mx-10 lg:mx-20 xl:mx-36'>
                 <p className='hidden md:block text-sm font-normal leading-5 text-white'>
                     Welcome to Clicon online eCommerce store.
                 </p>
@@ -61,8 +63,9 @@ export const Header = () => {
                 </div>
                 {/* User Actions */}
                 <div className='flex gap-2 xs:gap-6'>
-                    <Link to='/cart' aria-label="Cart">
+                    <Link to='/cart' aria-label="Cart" className='relative'>
                         <CartIcon />
+                        <div className='absolute -top-1 -right-1 border-[2.5px] border-primaryBackground flex justify-center items-center w-5 h-5 bg-white text-primaryBackground font-semibold text-sm rounded-full'>{countItems}</div>
                     </Link>
                     <button className='hidden xs:block' aria-label="Favorites">
                         <FavoriteIcon />

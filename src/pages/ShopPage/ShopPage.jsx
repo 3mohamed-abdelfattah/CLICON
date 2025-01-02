@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Header, Footer, Products, Categories } from '@/components';
 
-export const ShopPage = () => {
+export const ShopPage = ({ cartCount }) => {
 
     const [category, setCategory] = useState('');
 
@@ -12,7 +12,7 @@ export const ShopPage = () => {
                 <span className='md:max-w-80'>
                     <Categories onCategorySelect={setCategory} />
                 </span>
-                <span className=''>
+                <span>
                     <Products category={category} />
                 </span>
                 {/*

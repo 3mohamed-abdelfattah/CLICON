@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect, useState } from 'react';
+import { Fragment, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { Header, Footer } from '@/components';
@@ -9,7 +9,13 @@ import { DeleteIcon } from '@/utils/icons.util';
 
 export const Cart = () => {
     const [cartItems, setCartItems] = useState([]);
+    const [cartCount, setCartCount] = useState(0);
+
     const dispatch = useDispatch();
+
+    useEffect(() => {
+        setCartCount(cartItems.length);
+    }, [cartItems]);
 
     useEffect(() => {
         const storedCartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
@@ -44,7 +50,7 @@ export const Cart = () => {
 
     return (
         <Fragment>
-            <Header />
+            <Header countItems={cartCount} />
             <div className="p-5 md:p-20">
                 <div className="grid grid-cols-12 gap-6">
 
