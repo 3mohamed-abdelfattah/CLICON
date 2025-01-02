@@ -1,43 +1,49 @@
-@import url('https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,100..900;1,100..900&display=swap");
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-*{
-    /* outline: 1px solid salmon; */
+* {
+  /* outline: 1px solid salmon; */
 }
 body {
-    font-family: "Public Sans", sans-serif;
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  font-family: "Public Sans", sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 html {
-    scroll-behavior: smooth;
+  scroll-behavior: smooth;
 }
 
 ::-webkit-scrollbar {
-    width: 8px;
+  width: 8px;
+}
+
+@media (max-width: 500px) {
+  ::-webkit-scrollbar {
+    width: 0px;
+  }
 }
 
 ::-webkit-scrollbar-thumb {
-    background-color: #FFA500;
-    border-radius: 10px;
+  background-color: #ffa500;
+  border-radius: 10px;
 }
 
 ::-webkit-scrollbar-track {
-    background-color: #F0F0F0;
-    border-radius: 10px;
+  background-color: #f0f0f0;
+  border-radius: 10px;
 }
 
 input[type="number"]::-webkit-outer-spin-button,
 input[type="number"]::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
+  -webkit-appearance: none;
+  margin: 0;
 }
 
 input[type="number"] {
-    -moz-appearance: textfield;
+  -moz-appearance: textfield;
 }
