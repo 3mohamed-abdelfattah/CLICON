@@ -9,13 +9,7 @@ import { DeleteIcon } from '@/utils/icons.util';
 
 export const Cart = () => {
     const [cartItems, setCartItems] = useState([]);
-    const [cartCount, setCartCount] = useState(0);
-
     const dispatch = useDispatch();
-
-    useEffect(() => {
-        setCartCount(cartItems.length);
-    }, [cartItems]);
 
     useEffect(() => {
         const storedCartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
@@ -50,7 +44,7 @@ export const Cart = () => {
 
     return (
         <Fragment>
-            <Header countItems={cartCount} />
+            <Header />
             <div className="p-5 md:p-20">
                 <div className="grid grid-cols-12 gap-6">
 

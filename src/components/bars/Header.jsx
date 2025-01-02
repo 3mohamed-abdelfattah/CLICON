@@ -4,6 +4,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { CartIcon, CompareIcon, DarkDropListIcon, FavoriteIcon, FollowUsIcon, HelpIcon, Logo, PhoneIcon, SearchIcon, SupportIcon, TrackIcon, UserIcon } from '@/utils/icons.util';
 // Images
 import LogoIcon from '@/assets/images/Logo.png';
+import { useSelector } from 'react-redux';
 
 // Reusable Styles
 const styles = {
@@ -11,9 +12,10 @@ const styles = {
     bottomNAV: `flex gap-2 rounded-sm text-[#5F6C72] items-center font-medium text-sm leading-5`,
 };
 
-export const Header = ({ countItems }) => {
+export const Header = () => {
     const navigate = useNavigate();
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+    const cartCount = useSelector((state) => state.cart.cartCount);
 
     // Handle user logout
     const handleLogout = () => {
@@ -65,7 +67,7 @@ export const Header = ({ countItems }) => {
                 <div className='flex gap-2 xs:gap-6'>
                     <Link to='/cart' aria-label="Cart" className='relative'>
                         <CartIcon />
-                        <div className='absolute -top-1 -right-1 border-[2.5px] border-primaryBackground flex justify-center items-center w-5 h-5 bg-white text-primaryBackground font-semibold text-sm rounded-full'>{countItems}</div>
+                        <div className='absolute -top-1 -right-1 border-[2.5px] border-primaryBackground flex justify-center items-center w-5 h-5 bg-white text-primaryBackground font-semibold text-sm rounded-full'>{cartCount}</div>
                     </Link>
                     <button className='hidden xs:block' aria-label="Favorites">
                         <FavoriteIcon />
