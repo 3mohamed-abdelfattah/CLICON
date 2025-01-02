@@ -9,7 +9,7 @@ import LogoIcon from "@/assets/images/Logo.png";
 
 // Reusable Styles
 const styles = {
-    aTagStyle: `block px-4 py-2 text-black hover:bg-secondaryText cursor-pointer`,
+    aTagStyle: `block px-4 py-2 text-black hover:bg-secondaryText hover:text-white rounded cursor-pointer`,
     bottomNAV: `flex gap-2 rounded-sm text-[#5F6C72] items-center font-medium text-sm leading-5`,
 };
 
@@ -77,7 +77,7 @@ export const Header = () => {
                             {cartCount}
                         </div>
                     </Link>
-                    <button className="hidden xs:block" aria-label="Favorites">
+                    <button className="hidden vsm:block" aria-label="Favorites">
                         <Icons.FavoriteIcon />
                     </button>
                     <button className="cursor-pointer" onClick={toggleDropdown} aria-haspopup="true" aria-expanded={isDropdownOpen}>
@@ -97,7 +97,7 @@ export const Header = () => {
                                 Show Favorites
                             </a>
                             <button
-                                className="block px-4 py-2 hover:bg-secondaryText text-red-600 font-medium cursor-pointer"
+                                className="block px-4 py-2 hover:bg-secondaryText hover:text-white rounded text-red-600 font-medium cursor-pointer"
                                 onClick={handleLogout}
                             >
                                 Logout
@@ -110,9 +110,9 @@ export const Header = () => {
             {/* Bottom Navigation */}
             <nav className="flex justify-around items-center gap-16 h-20 bg-white px-2">
                 <div className="flex items-center gap-2 lg:gap-6">
-                    <button className="flex gap-2 rounded-sm bg-[#F2F4F5] items-center px-6 py-[14px] font-medium text-sm leading-5">
+                    <Link to="/shop" className="flex gap-2 rounded-sm bg-[#F2F4F5] items-center px-6 py-[14px] font-medium text-sm leading-5">
                         All Category <Icons.DarkDropListIcon />
-                    </button>
+                    </Link>
                     <Link to="/track-order" className={styles.bottomNAV}>
                         <Icons.TrackIcon /> Track Order
                     </Link>
