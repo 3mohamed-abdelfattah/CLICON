@@ -1,11 +1,29 @@
-import { Fragment, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
+// Components
 import { Header, Footer } from '@/components';
-//Store
+// Store
 import { removeFromCart, updateCartQuantity } from '@/store/slices/cartSlice';
-//Icons
-import { DeleteIcon } from '@/utils/icons.util';
+// Icons
+import *as Icons from '@/utils/icons.util';
+
+// Reusable Styles
+const styles = {
+    thStyle: `p-4 text-sm md:text-base`,
+    buttonsStyle: `border-2 border-secondaryText text-secondaryText py-2 px-2 xs:px-4 rounded`,
+};
+
+// Calculate Cart Totals
+const calculateTotals = (cartItems) => {
+    const total = cartItems.reduce((acc, item) => acc + item.price * item.quantity, 0);
+    const tax = (total * 0.1).toFixed(2);
+    const discount = (total * 0.2).toFixed(2);
+    const shipping = 10;
+    const grandTotal = (total - discount + parseFloat(tax)).toFixed(2);
+
+    return { total, tax, discount, shipping, grandTotal };
+};
 
 export const Cart = () => {
     const [cartItems, setCartItems] = useState([]);
@@ -16,7 +34,9 @@ export const Cart = () => {
         setCartItems(storedCartItems);
     }, []);
 
-    //Remove from cart
+    const { total, tax, discount, shipping, grandTotal } = calculateTotals(cartItems);
+
+    // Remove from cart
     const handleRemove = (id) => {
         dispatch(removeFromCart({ id }));
         const updatedItems = cartItems.filter(item => item.id !== id);
@@ -24,7 +44,7 @@ export const Cart = () => {
         localStorage.setItem('cartItems', JSON.stringify(updatedItems));
     };
 
-    //Change Item quantity
+    // Change item quantity
     const handleUpdateQuantity = (id, quantity) => {
         dispatch(updateCartQuantity({ id, quantity: parseInt(quantity, 10) }));
 
@@ -35,29 +55,21 @@ export const Cart = () => {
         localStorage.setItem('cartItems', JSON.stringify(updatedItems));
     };
 
-    //Cart Total Amount
-    const total = cartItems.reduce((acc, item) => acc + item.price * item.quantity, 0);
-    const tax = (total * 0.1).toFixed(2);
-    const discount = 24;
-    const shipping = 10;
-    const grandTotal = (total - discount + parseFloat(tax)).toFixed(2);
-
     return (
-        <Fragment>
+        <>
             <Header />
-            <div className="p-5 md:p-20">
+            <main className="p-5 md:p-10">
                 <div className="grid grid-cols-12 gap-6">
-
-                    {/* Left Section */}
-                    <div className="col-span-12 lg:col-span-8">
-                        <h2 className="text-xl font-bold mb-4">Shopping Card</h2>
+                    {/* Left Section: Cart Items */}
+                    <section className="col-span-12 lg:col-span-8">
+                        <h2 className="text-xl font-bold mb-4">Shopping Cart</h2>
                         <table className="w-full bg-white shadow-lg rounded-lg">
                             <thead>
                                 <tr className="bg-gray-100 text-left">
                                     <th className={styles.thStyle}>PRODUCTS</th>
                                     <th className={`${styles.thStyle} hidden sm:block`}>PRICE</th>
                                     <th className={styles.thStyle}>QTY</th>
-                                    <th className={`${styles.thStyle} hidden xs:block text-center`}>SUB_Total</th>
+                                    <th className={`${styles.thStyle} hidden xs:block text-center`}>SUBTOTAL</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -74,14 +86,14 @@ export const Cart = () => {
                                                         className="mr-2 text-red-600"
                                                         onClick={() => handleRemove(item.id)}
                                                     >
-                                                        <DeleteIcon />
+                                                        <Icons.DeleteIcon />
                                                     </button>
                                                     <img
                                                         src={item.thumbnail || '@/assets/images/error.png'}
                                                         alt={item.title}
                                                         className="w-12 h-12 xs:w-16 xs:h-16 object-cover mr-4"
                                                     />
-                                                    <span className='text-sm md:text-base'>{item.title}</span>
+                                                    <span className="text-sm md:text-base">{item.title}</span>
                                                 </div>
                                             </td>
                                             <td className="hidden sm:flex p-1 md:p-4">${item.price}</td>
@@ -93,14 +105,16 @@ export const Cart = () => {
                                                     className="w-9 text-center border-2 rounded-full no-arrows"
                                                 />
                                             </td>
-                                            <td className="p-1 md:p-4 text-sm md:text-base hidden xs:flex items-center h-24">${(item.price * item.quantity).toFixed(2)}</td>
+                                            <td className="p-1 md:p-4 text-sm md:text-base hidden xs:flex items-center h-24">
+                                                ${(item.price * item.quantity).toFixed(2)}
+                                            </td>
                                         </tr>
                                     ))
                                 )}
                             </tbody>
                         </table>
                         <div className="flex justify-between mt-4">
-                            <Link to='/shop'>
+                            <Link to="/shop">
                                 <button className={styles.buttonsStyle}>
                                     ← Return to Shop
                                 </button>
@@ -109,10 +123,10 @@ export const Cart = () => {
                                 Update Cart
                             </button>
                         </div>
-                    </div>
+                    </section>
 
-                    {/* Right Section */}
-                    <div className="col-span-12 lg:col-span-4 bg-white p-6 rounded-lg shadow-lg">
+                    {/* Right Section: Cart Totals */}
+                    <aside className="col-span-12 lg:col-span-4 bg-white p-6 rounded-lg shadow-lg">
                         <h3 className="text-xl font-bold mb-4">Cart Totals</h3>
                         <div className="mb-4">
                             <div className="flex justify-between">
@@ -132,7 +146,7 @@ export const Cart = () => {
                                 <span>${tax}</span>
                             </div>
                             <hr />
-                            <div className="flex justify-between font-bold text-lg mt-3 ">
+                            <div className="flex justify-between font-bold text-lg mt-3">
                                 <span>Total</span>
                                 <span>${grandTotal} USD</span>
                             </div>
@@ -141,28 +155,23 @@ export const Cart = () => {
                             Proceed to Checkout →
                         </button>
 
-                        {/* Coupon */}
+                        {/* Coupon Section */}
                         <div className="mt-6">
                             <h4 className="text-lg font-semibold mb-2">Coupon Code</h4>
                             <input
                                 type="text"
-                                className="w-full p-2 border rounded-lg"
+                                className="w-full p-2 border rounded-lg outline-none"
                                 placeholder="HA381CJA290JJ2AS"
+                                defaultValue={"HA381CJA290JJ2AS"}
                             />
                             <button className="bg-blue-500 text-white w-full py-3 mt-2 rounded">
                                 Apply Coupon
                             </button>
                         </div>
-
-                    </div>
+                    </aside>
                 </div>
-            </div>
+            </main>
             <Footer />
-        </Fragment>
+        </>
     );
 };
-
-const styles = {
-    thStyle: `p-4 text-sm md:text-base`,
-    buttonsStyle: `border-2 border-secondaryText text-secondaryText py-2 px-2 xs:px-4 rounded`,
-}
