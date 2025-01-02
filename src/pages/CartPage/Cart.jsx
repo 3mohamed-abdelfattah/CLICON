@@ -1,17 +1,17 @@
-import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
 // Components
-import { Header, Footer } from '@/components';
+import { Header, Footer } from "@/components";
 // Store
-import { removeFromCart, updateCartQuantity } from '@/store/slices/cartSlice';
+import { removeFromCart, updateCartQuantity } from "@/store/slices/cartSlice";
 // Icons
-import *as Icons from '@/utils/icons.util';
+import *as Icons from "@/utils/icons.util";
 
 // Reusable Styles
 const styles = {
     thStyle: `p-4 text-sm md:text-base`,
-    buttonsStyle: `border-2 border-secondaryText text-secondaryText py-2 px-2 xs:px-4 rounded`,
+    buttonsStyle: `border-2 border-secondaryText hover:bg-secondaryText/20 text-secondaryText py-2 px-2 xs:px-4 rounded transition-all`,
 };
 
 // Calculate Cart Totals
@@ -30,7 +30,7 @@ export const Cart = () => {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        const storedCartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+        const storedCartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
         setCartItems(storedCartItems);
     }, []);
 
@@ -41,7 +41,7 @@ export const Cart = () => {
         dispatch(removeFromCart({ id }));
         const updatedItems = cartItems.filter(item => item.id !== id);
         setCartItems(updatedItems);
-        localStorage.setItem('cartItems', JSON.stringify(updatedItems));
+        localStorage.setItem("cartItems", JSON.stringify(updatedItems));
     };
 
     // Change item quantity
@@ -70,8 +70,13 @@ export const Cart = () => {
         setCartItems(updatedItems);
 
         // Save the updated cart items to local storage
-        localStorage.setItem('cartItems', JSON.stringify(updatedItems));
+        localStorage.setItem("cartItems", JSON.stringify(updatedItems));
     };
+
+    const handleResetCart = () => {
+        localStorage.removeItem("cartItems");
+        location.reload()
+    }
 
     return (
         <>
@@ -87,7 +92,8 @@ export const Cart = () => {
                                     <th className={styles.thStyle}>PRODUCTS</th>
                                     <th className={`${styles.thStyle} hidden sm:block`}>PRICE</th>
                                     <th className={styles.thStyle}>QTY</th>
-                                    <th className={`${styles.thStyle} hidden xs:block text-center`}>SUBTOTAL</th>
+                                    <th className={`${styles.thStyle} hidden xs:block md:hidden text-center`}>SUB</th>
+                                    <th className={`${styles.thStyle} hidden md:block text-center`}>SUBTOTAL</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -99,31 +105,28 @@ export const Cart = () => {
                                     cartItems.map((item) => (
                                         <tr key={item.id} className="border-b">
                                             <td className="p-1 md:p-4">
-                                                <div className="flex items-center">
-                                                    <button
-                                                        className="mr-2 text-red-600"
-                                                        onClick={() => handleRemove(item.id)}
-                                                    >
+                                                <div className="flex items-center cursor-pointer">
+                                                    <div className="mr-2 hover:scale-110" onClick={() => handleRemove(item.id)}>
                                                         <Icons.DeleteIcon />
-                                                    </button>
+                                                    </div>
                                                     <img
-                                                        src={item.thumbnail || '@/assets/images/error.png'}
+                                                        src={item.thumbnail || "@/assets/images/error.png"}
                                                         alt={item.title}
                                                         className="w-12 h-12 xs:w-16 xs:h-16 object-cover mr-4"
                                                     />
-                                                    <span className="text-sm md:text-base">{item.title}</span>
+                                                    <span className="text-sm sm:text-base">{item.title}</span>
                                                 </div>
                                             </td>
-                                            <td className="hidden sm:flex p-1 md:p-4">${item.price}</td>
-                                            <td className="p-1 md:p-4 text-sm md:text-base">
+                                            <td className="hidden sm:flex p-1 md:p-4 text-sm sm:text-base">${item.price}</td>
+                                            <td className="p-1 md:p-4 text-xs sm:text-base">
                                                 <input
                                                     type="number"
                                                     value={item.quantity}
                                                     onChange={(e) => handleUpdateQuantity(item.id, e.target.value)}
-                                                    className="w-9 text-center border-2 rounded-full no-arrows"
+                                                    className="w-9 text-center border-2 rounded-full no-arrows outline-none"
                                                 />
                                             </td>
-                                            <td className="p-1 md:p-4 text-sm md:text-base hidden xs:flex items-center h-24">
+                                            <td className="p-1 md:p-4 text-sm sm:text-base hidden xs:flex items-center h-24">
                                                 ${(item.price * item.quantity).toFixed(2)}
                                             </td>
                                         </tr>
@@ -137,7 +140,7 @@ export const Cart = () => {
                                     ← Return to Shop
                                 </button>
                             </Link>
-                            <button className={styles.buttonsStyle}>
+                            <button className={styles.buttonsStyle} onClick={handleResetCart}>
                                 Update Cart
                             </button>
                         </div>
@@ -153,7 +156,7 @@ export const Cart = () => {
                             </div>
                             <div className="flex justify-between">
                                 <span>Shipping</span>
-                                <span>{shipping === 0 ? 'Free' : `$${shipping}`}</span>
+                                <span>{shipping === 0 ? "Free" : `$${shipping}`}</span>
                             </div>
                             <div className="flex justify-between text-green-600">
                                 <span>Discount</span>
@@ -169,7 +172,7 @@ export const Cart = () => {
                                 <span>${grandTotal} USD</span>
                             </div>
                         </div>
-                        <button className="bg-orange-500 text-white w-full py-3 rounded font-semibold">
+                        <button className="bg-orange-500 hover:bg-orange-400 text-white w-full py-3 rounded font-semibold transition-all">
                             Proceed to Checkout →
                         </button>
 
@@ -182,13 +185,13 @@ export const Cart = () => {
                                 placeholder="HA381CJA290JJ2AS"
                                 defaultValue={"HA381CJA290JJ2AS"}
                             />
-                            <button className="bg-blue-500 text-white w-full py-3 mt-2 rounded">
+                            <button className="bg-blue-500 hover:bg-blue-400 text-white w-full py-3 mt-2 rounded transition-all">
                                 Apply Coupon
                             </button>
                         </div>
                     </aside>
-                </div>
-            </main>
+                </div >
+            </main >
             <Footer />
         </>
     );
