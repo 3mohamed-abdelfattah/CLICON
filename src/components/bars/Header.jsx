@@ -73,11 +73,13 @@ export const Header = () => {
                 <div className="flex gap-2 xs:gap-6">
                     <Link to="/cart" aria-label="Cart" className="relative">
                         <Icons.CartIcon />
-                        <div className="absolute -top-1 -right-1 border-[2.5px] border-primaryBackground flex justify-center items-center w-5 h-5 bg-white text-primaryBackground font-semibold text-sm rounded-full">
-                            {cartCount}
-                        </div>
+                        {localStorage.getItem("token") && (
+                            <div className="absolute -top-1 -right-1 border-[2.5px] border-primaryBackground flex justify-center items-center w-5 h-5 bg-white text-primaryBackground font-semibold text-sm rounded-full">
+                                {cartCount}
+                            </div>
+                        )}
                     </Link>
-                    <button className="hidden vsm:block" aria-label="Favorites">
+                    <button className="hidden sm:block" aria-label="Favorites">
                         <Icons.FavoriteIcon />
                     </button>
                     <button className="cursor-pointer" onClick={toggleDropdown} aria-haspopup="true" aria-expanded={isDropdownOpen}>
