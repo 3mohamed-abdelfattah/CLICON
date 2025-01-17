@@ -1,12 +1,8 @@
-import { Fragment } from "react"
 import Router from "./router"
 
 function App() {
-  return (
-    <Fragment>
-      <Router />
-    </Fragment>
-  )
+  return <Router />
+
 }
 
 export default App

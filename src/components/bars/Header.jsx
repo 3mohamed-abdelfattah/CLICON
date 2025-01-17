@@ -10,7 +10,7 @@ import LogoIcon from "@/assets/images/Logo.png";
 // Reusable Styles
 const styles = {
     aTagStyle: `block px-4 py-2 text-black hover:bg-secondaryText hover:text-white rounded cursor-pointer`,
-    bottomNAV: `flex gap-2 rounded-sm text-[#5F6C72] items-center font-medium text-sm leading-5`,
+    bottomNAV: `flex gap-2 rounded-sm text-[#5F6C72] items-center font-medium text-sm leading-5 text-black/70 hover:text-primaryText`,
 };
 
 export const Header = () => {
@@ -50,7 +50,7 @@ export const Header = () => {
             <div className="relative flex justify-evenly items-center h-[88px] px-3">
                 {/* Logo */}
                 <Link to="/home" aria-label="Home">
-                    <span className="hidden md:block">
+                    <span className="hidden md:block text-white">
                         <Icons.Logo />
                     </span>
                     <div className="md:hidden w-10 xs:w-12 shrink-0">
@@ -64,25 +64,25 @@ export const Header = () => {
                         placeholder="Search for anything..."
                         className="text-sm font-normal leading-5 text-secondaryBackground w-full outline-none"
                     />
-                    <button aria-label="Search">
+                    <button aria-label="Search" className="text-black/70 hover:text-primaryText">
                         <Icons.SearchIcon />
                     </button>
                 </div>
 
                 {/* User Actions */}
                 <div className="flex gap-2 xs:gap-6">
-                    <Link to="/cart" aria-label="Cart" className="relative">
+                    <Link to="/cart" aria-label="Cart" className="relative text-white hover:text-primaryText group">
                         <Icons.CartIcon />
                         {localStorage.getItem("token") && (
-                            <div className="absolute -top-1 -right-1 border-[2.5px] border-primaryBackground flex justify-center items-center w-5 h-5 bg-white text-primaryBackground font-semibold text-sm rounded-full">
+                            <div className="absolute -top-1 -right-1 border-[2.5px] border-primaryBackground flex justify-center items-center w-5 h-5 bg-white group-hover:bg-primaryText text-primaryBackground font-semibold text-sm rounded-full">
                                 {cartCount}
                             </div>
                         )}
                     </Link>
-                    <button className="hidden sm:block" aria-label="Favorites">
+                    <button className="hidden sm:block text-white hover:text-primaryText" aria-label="Favorites">
                         <Icons.FavoriteIcon />
                     </button>
-                    <button className="cursor-pointer" onClick={toggleDropdown} aria-haspopup="true" aria-expanded={isDropdownOpen}>
+                    <button className="cursor-pointer text-white hover:text-primaryText" onClick={toggleDropdown} aria-haspopup="true" aria-expanded={isDropdownOpen}>
                         <Icons.UserIcon />
                     </button>
 

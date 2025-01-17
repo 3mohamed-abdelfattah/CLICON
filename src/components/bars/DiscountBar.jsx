@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 // Icons
 import * as Icons from "@/utils/icons.util";
 
@@ -28,9 +29,9 @@ export const DiscountBar = () => {
 
                     {/* Shop now button, visible only on medium and larger screens */}
                     <div className="flex gap-5">
-                        <button className="hidden md:flex items-center gap-2 px-6 font-bold text-sm rounded-sm leading-[48px] uppercase bg-WarningText text-secondaryBackground">
+                        <Link to="/shop" className="hidden md:flex items-center gap-2 px-6 font-bold text-sm rounded-sm leading-[48px] uppercase bg-WarningText text-secondaryBackground">
                             Shop now <Icons.RightArrowDarkIcon />
-                        </button>
+                        </Link>
 
                         {/* Close button */}
                         <button className="cursor-pointer" onClick={handleClose} aria-label="Close Discount Bar">

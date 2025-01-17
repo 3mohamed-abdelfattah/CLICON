@@ -5,9 +5,6 @@ import { fetchProducts, fetchProductsByCategory } from '@/store/slices/productsS
 import { addToCart } from '@/store/slices/cartSlice';
 //Icons
 import { GrayStarIcon, StarIcon, CartIcon, DiscountProductIcon } from '@/utils/icons.util';
-//Images
-import Whish from '@/assets/images/forDesign/wishlest.png';
-import Checkout from '@/assets/images/forDesign/checkout.png';
 
 export const Products = ({ category }) => {
     const dispatch = useDispatch();
@@ -121,8 +118,16 @@ export const Products = ({ category }) => {
                                 >
                                     Add to Cart <CartIcon />
                                 </button>
-                                <img src={Whish} alt="Wishlist" className='hidden xs:block' />
-                                <img src={Checkout} alt="Checkout" className='hidden xs:block' />
+
+
+                                {/* Images */}
+
+
+
+
+
+
+
                             </div>
                         </div>
                     </div>

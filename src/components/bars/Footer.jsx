@@ -68,7 +68,7 @@ export const Footer = () => {
 
       {/* Footer Bottom Line */}
       <div className="flex justify-center items-center text-[#ADB7BC] text-sm w-full text-center p-3 py-5 border-t-2 border-gray-800 mt-10">
-        <p className="text-s">Kinbo - eCommerce Template © 2021. Design by Templatecookie</p>
+        <p className="text-s">Coded by Codem | Mohamed Mohamed || Design by Templatecookie</p>
       </div>
     </footer>
   );

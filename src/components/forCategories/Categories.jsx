@@ -2,11 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 //Store
 import { fetchCategories } from '@/store/slices/productsSlice';
-//Images
-import WatchAD from '@/assets/images/ads/adWatch.png'
-import Design1 from '@/assets/images/forDesign/image1.png'
-import Design2 from '@/assets/images/forDesign/image2.png'
-import Design3 from '@/assets/images/forDesign/image3.png'
 
 export const Categories = ({ onCategorySelect, selectedCategory }) => {
     const dispatch = useDispatch();
@@ -44,14 +39,7 @@ export const Categories = ({ onCategorySelect, selectedCategory }) => {
                 ))}
             </div>
             <span className='hidden md:block pl-2'>
-                <hr />
-                <img src={Design1} alt='ADS' />
-                <hr />
-                <img src={Design2} alt='ADS' />
-                <hr />
-                <img src={Design3} alt='ADS' />
-                <hr />
-                <img src={WatchAD} alt='ADS' />
+                {/* Images */}
             </span>
         </div>
     );
